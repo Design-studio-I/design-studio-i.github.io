@@ -1,0 +1,103 @@
+art
+   _data/
+        navigation.yml
+        merch.yml
+        merch/
+           accessories.yml
+           auto.yml
+           bed_linen.yml
+           business.yml
+           clothes.yml
+           design.yml
+           home.yml
+           interior.yml
+           kids.yml
+           toys.yml
+   _includes/
+        portfolio-level.html
+   _layouts/
+        merch-single.html
+   _posts/
+        2026-03-12-07-19-post1.md
+        2026-03-12-11-09-post2.md
+   _site/
+   admin/
+        config.yml
+        index.html
+   assets/
+        css/
+           custom_1.css
+           main.scss
+        images/
+           accessories/
+              #Изображения для мерч
+           auto/
+              #Изображения для мерч
+           bed_linen/
+              #Изображения для мерч
+           blog/
+              #Изображения для блога
+           business/
+              #Изображения для мерч
+           clothes/
+              #Изображения для мерч
+           home/
+              #Изображения для мерч
+           interior/
+              #Изображения для мерч
+           kids/
+              #Изображения для мерч
+           toys/
+              #Изображения для мерч 
+           design/
+              #Изображения для мерч
+
+        js/
+           main.js
+   blog/
+        index.md
+   merch/
+        accessories/
+           accessories.md
+        auto/
+           auto.md
+        bed_linen/
+           bed_linen.md
+        business/
+           business.md
+        clothes/
+           clothes.md
+        design/
+           design.md
+        home/
+           home.md
+        interior/
+           interior.md
+        kids/
+           kids.md
+        toys/
+           toys.md
+        index.md
+        item.md
+   .gitignore
+   .ruby-version
+   _config.yml
+   404.html
+   about.md
+   contacts.md
+   Gemfile
+   Gemfile.lock
+   index.md
+   README.md
+   
+
+
+
+
+
+
+
+
+
+
+   

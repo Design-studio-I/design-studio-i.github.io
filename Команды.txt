@@ -1,0 +1,35 @@
+bundle exec jekyll serve 
+
+bundle exec jekyll serve --livereload --open-url
+
+bundle exec jekyll clean 
+npx netlify-cms-proxy-server
+Server address: http://127.0.0.1:4000/ 
+http://localhost:4000/admin/#/collections/merch_data
+
+bundle install 
+
+bundle clean --force 
+
+cd C:\Users\Андреи\art 
+
+touch index.md 
+
+git add .
+
+git commit -m "Fix admin blank page"
+
+git push origin main 
+
+:wq
+git push origin main 
+
+Золотое правило работы с Decap CMS:
+
+Если ты поработал в админке в браузере — первым делом на компьютере делай git pull. Только после этого начинай править код в VS Code или другом редакторе. 
+
+git push --set-upstream origin main 
+
+Эта команда не просто отправит файлы, но и «склеит» твою папку с GitHub навсегда, чтобы в следующий раз можно было писать просто git push. 
+
+Нужен пост наверху? Ставишь pinned: true

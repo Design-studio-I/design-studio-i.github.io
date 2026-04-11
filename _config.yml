@@ -1,0 +1,86 @@
+# ==========================================
+# ОСНОВНЫЕ НАСТРОЙКИ (БЕЗ ТАБУЛЯЦИЙ!)
+# ==========================================
+title: "Студия авторской вышивки"
+description: "Дизайн, мерч и уникальные решения"
+url: "http://localhost:4000"
+baseurl: "" # Оставь пустым, если сайт в корне домена
+locale: "ru-RU"
+
+# ==========================================
+# ТЕМА И ПЛАГИНЫ
+# ==========================================
+# Если используешь тему как Gem (стандарт для локалки):
+theme: minimal-mistakes-jekyll
+
+# Если деплоишь на GitHub Pages, раскомментируй строку ниже:
+# remote_theme: "mmistakes/minimal-mistakes"
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+
+# ==========================================
+# НАСТРОЙКИ ПРИЛАВКА (ДАННЫЕ)
+# ==========================================
+data_dir: _data
+
+# ==========================================
+# ПАРАМЕТРЫ ТЕМЫ (MINIMAL MISTAKES)
+# ==========================================
+minimal_mistakes_skin: "default" # Можно поменять на "air", "aqua", "dirt" и т.д.
+
+# Навигация (берется из _data/navigation.yml)
+site_navigation: main
+
+# Катинка в шапке (если хочешь на все страницы сразу)
+# header:
+#   overlay_image: /assets/images/header-bg.jpg
+
+# ==========================================
+# ТИПОГРАФИКА И СТИЛИ (SASS)
+# ==========================================
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# ==========================================
+# НАСТРОЙКИ ПО УМОЛЧАНИЮ (DEFAULTS)
+# ==========================================
+defaults:
+  # Страницы
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "single"
+      author_profile: true
+      sidebar:
+        nav: "main" # Если хочешь боковое меню
+  
+  # Посты блога
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "single"
+      author_profile: true
+      read_time: true
+      comments: false
+
+# ==========================================
+# ИСКЛЮЧЕНИЯ (ЧТО НЕ НУЖНО КОМПИЛИРОВАТЬ)
+# ==========================================
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - .bundle/
+  - .jekyll-cache/
+  - .sass-cache/
+  - README.md
