@@ -1,0 +1,33 @@
+<nav id="site-nav" class="greedy-nav">
+  <ul class="visible-links">
+    {% for link in site.data.navigation.main %}
+      <li class="masthead__menu-item {% if link.children %}has-children{% endif %}">
+        <a href="{{ link.url | relative_url }}">
+          {{ link.title }}
+          {% if link.url == '/cart/' %}
+            <span id="cart-count-badge" style="
+              display: none;
+              background: #27ae60;
+              color: white;
+              border-radius: 50%;
+              padding: 2px 8px;
+              font-size: 0.7em;
+              font-weight: bold;
+              vertical-align: middle;
+              margin-left: 5px;
+              box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            ">0</span>
+          {% endif %}
+        </a>
+        
+        {% if link.children %}
+          <ul class="dropdown-menu">
+            {% for child in link.children %}
+              <li><a href="{{ child.url | relative_url }}">{{ child.title }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

@@ -1,0 +1,36 @@
+main:
+  - title: "Студия"
+    url: /
+  
+  - title: "Читальня"
+    url: /blog/
+
+  - title: "Прилавок"
+    url: /merch/
+    children:
+      - title: "Бизнесу"
+        url: /merch/business/
+      - title: "Интерьер"
+        url: /merch/interior/
+      - title: "Для дома"
+        url: /merch/home/
+      - title: "Одежда"
+        url: /merch/clothes/
+      - title: "Аксессуары"
+        url: /merch/accessories/
+      - title: "Постельное белье"
+        url: /merch/bed_linen/
+      - title: "Детям"
+        url: /merch/kids/
+      - title: "Игрушки"
+        url: /merch/toys/
+      - title: "Автомобилистам"
+        url: /merch/auto/
+      - title: "Дизайн для вышивальных машин"
+        url: /merch/design/
+
+  - title: "Моя корзинка"
+    url: /cart/
+
+  - title: "Контакты"
+    url: /contacts/

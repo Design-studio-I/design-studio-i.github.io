@@ -1,0 +1,11 @@
+merch:
+  - slug: car_0001
+    title: Эмблема Тойота
+    price: "10000"
+    image: /assets/images/merch/car_0074.png
+    description: Вышивка сатин на интерьерные поверхности
+  - slug: car_0002
+    title: Эмблема NISSAN
+    price: "5000"
+    description: Эмблема на подголовник. Марка Запорожец.
+    image: /assets/images/merch/car_0059.png

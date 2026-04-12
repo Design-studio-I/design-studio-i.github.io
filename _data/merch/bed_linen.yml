@@ -1,0 +1,31 @@
+merch:
+  - slug: bed_0001
+    title: Ситцевая свадьба
+    price: "42000"
+    image: /assets/images/bed_linen/bed_0001.jpg
+    description: Сатиновая вышивка одноцветная 3 детали
+  - slug: bed_0002
+    title: Снигири на рябине
+    price: "48000"
+    description: Вышивка трёхцветная комплект 3 предмета
+    image: /assets/images/merch/bed_0002.jpg
+  - slug: bed_0003
+    title: Фиолетовый
+    price: "33000"
+    image: /assets/images/merch/bed_0003.jpg
+  - slug: bed_0004
+    title: Лямур
+    price: "31000"
+    image: /assets/images/merch/bed_0004.jpg
+  - slug: bed_0005
+    title: Догони
+    price: "28000"
+    image: /assets/images/merch/bed_0005.jpg
+  - slug: bed_0006
+    title: Незабудки
+    price: "39000"
+    image: /assets/images/merch/bed_0006.jpg
+  - slug: bed_0007
+    title: Греческий буйвол
+    price: "16000"
+    image: /assets/images/merch/bed_0007.jpeg

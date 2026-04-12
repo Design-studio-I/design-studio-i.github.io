@@ -1,0 +1,27 @@
+merch:
+  - slug: bus_0001
+    title: Логотип
+    price: "5000"
+    image: /assets/images/business/bus_0001.jpg
+    description: Вышивка логотипа 10х12см. на футболке
+  - slug: bus_0002
+    title: LACOSTE
+    description: Логотип 12х10см.
+    price: "3800"
+    image: /assets/images/merch/bus_0002.png
+  - slug: bus_0003
+    title: Салфетка - Стейк
+    price: "2600"
+    image: /assets/images/merch/bus_0003.jpeg
+  - slug: bus_0004
+    title: Салфетка - Яблоко
+    price: "2600"
+    image: /assets/images/merch/bus_0004.jpeg
+  - slug: bus_0005
+    title: Салфетка - Апельсин
+    price: "2600"
+    image: /assets/images/merch/bus_0005.jpeg
+  - slug: bus_0006
+    title: Салфетка - Брокколи
+    price: "2600"
+    image: /assets/images/merch/bus_0006.jpeg

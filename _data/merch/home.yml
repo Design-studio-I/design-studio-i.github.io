@@ -1,0 +1,16 @@
+merch:
+  - slug: hom_0001
+    title: Плейсмат - куверт
+    price: "3200"
+    image: /assets/images/home/hom_0001.jpg
+    description: ""
+  - slug: hom_0003
+    title: Пдеймат, Костер, Салфетка
+    price: "4200"
+    image: /assets/images/merch/hom_0003.jpg
+    description: Набор
+  - slug: hom_0002
+    title: Полотенце для рук
+    price: "4100"
+    image: /assets/images/merch/hom_0002.jpg
+    description: Вышивка 12х12

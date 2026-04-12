@@ -1,0 +1,27 @@
+merch:
+  - slug: int_0001
+    title: Деловая женщина
+    price: "80000"
+    image: /assets/images/interior/int_0001.jpg
+    description: Картина вышитая 30х50см. без рамки.
+  - slug: int_0002
+    title: Весеннее настроение
+    image: /assets/images/merch/int_0002.jpg
+    price: "95000"
+    description: Картина вышитая 30х50см. без рамки.
+  - slug: int_0003
+    title: Скрипачка
+    price: "32000"
+    image: /assets/images/merch/int_0003.jpg
+  - slug: int_0004
+    title: Венеция
+    price: "96000"
+    image: /assets/images/merch/int_0004.jpg
+  - slug: int_0005
+    title: Шанс
+    price: "51000"
+    image: /assets/images/merch/int_0005.jpg
+  - slug: int_0006
+    title: Нега
+    price: "28000"
+    image: /assets/images/merch/int_0006.jpg

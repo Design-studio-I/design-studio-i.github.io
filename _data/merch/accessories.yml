@@ -1,0 +1,21 @@
+merch:
+  - slug: bag_0001
+    title: Сумка Хаски
+    price: "50000"
+    image: /assets/images/accessories/bag_0001.jpg
+    description: Пэтчворк с вышивкой 35х40см. на замке молния с брительками и
+      наплечным ремнём
+  - slug: bag_0002
+    title: Сумка со львом
+    image: /assets/images/merch/bag_0002.jpg
+    price: "100000"
+    description: Многослойный квилтинг с вышевкой.
+  - slug: bag_0003
+    title: Щен в домике
+    price: "35000"
+    description: Вышивка в стиле карандаш. Сумка 35х45см.
+    image: /assets/images/merch/bag_0003.jpg
+  - slug: bug_0004
+    title: Вышивка Совята
+    price: "6100"
+    image: /assets/images/merch/acc_0004.jpeg
