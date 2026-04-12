@@ -1,0 +1,73 @@
+Отключение кликабельности кнопки меню (li.masthead__menu-item с uid=980):
+
+CSS pointer-events: none;: Это наиболее чистый способ визуально отключить клики. Элемент будет выглядеть так же, но не будет реагировать на события мыши. Вы можете применить это к дочернему элементу a или к самому li.
+Если применить к a: li.masthead__menu-item[data-uid='980'] > a { pointer-events: none; }
+Если применить к li: li.masthead__menu-item[data-uid='980'] { pointer-events: none; }
+Удалить атрибут href или изменить его на javascript:void(0);: Если вы хотите полностью убрать ссылку, вы можете удалить атрибут href из тега <a> или изменить его на javascript:void(0); или #.
+Пример JS: document.querySelector('li.masthead__menu-item[data-uid="980"] > a').removeAttribute('href');
+Использовать JavaScript для предотвращения действия по умолчанию: Вы можете добавить обработчик событий click к элементу a и вызвать event.preventDefault().
+Пример JS: document.querySelector('li.masthead__menu-item[data-uid="980"] > a').addEventListener('click', (e) => e.preventDefault());
+Добавление выпадающего списка при наведении:
+
+Для добавления выпадающего списка при наведении, вам нужно будет создать новую структуру HTML внутри li.masthead__menu-item и стилизовать ее с помощью CSS.
+
+HTML-структура: Внутри li.masthead__menu-item добавьте новый ul (или div) для вашего выпадающего меню.
+html
+<li class="masthead__menu-item" data-uid="980">
+      <a href="#">Название кнопки</a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Пункт 1</a></li>
+        <li><a href="#">Пункт 2</a></li>
+        <li><a href="#">Пункт 3</a></li>
+      </ul>
+    </li>
+    ```
+2.  **CSS-стили**:
+    *   Скройте выпадающее меню по умолчанию (например, `display: none;` или `visibility: hidden;`).
+    *   Сделайте родительский `li` позиционированным (`position: relative;`).
+    *   Сделайте выпадающее меню абсолютно позиционированным (`position: absolute;`).
+    *   Используйте псевдокласс `:hover` на родительском `li` для отображения выпадающего меню.
+
+    ```css
+    li.masthead__menu-item[data-uid='980'] {
+      position: relative; /* Чтобы дочерний элемент позиционировался относительно его */
+    }
+
+    li.masthead__menu-item[data-uid='980'] .dropdown-menu {
+      display: none; /* Скрываем по умолчанию */
+      position: absolute;
+      /* Добавьте другие стили позиционирования, например top, left */
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1; /* Убедитесь, что меню отображается поверх других элементов */
+      list-style: none; /* Уберите маркеры списка */
+      padding: 0;
+      margin: 0;
+    }
+
+    li.masthead__menu-item[data-uid='980']:hover .dropdown-menu {
+      display: block; /* Показываем при наведении */
+    }
+
+    /* Стили для элементов выпадающего списка */
+    li.masthead__menu-item[data-uid='980'] .dropdown-menu li a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    li.masthead__menu-item[data-uid='980'] .dropdown-menu li a:hover {
+      background-color: #ddd;
+    }
+    ```
+
+**Рекомендации:**
+
+*   Для современной и плавной анимации выпадающих меню рассмотрите использование [CSS View Transitions API](https://developer.chrome.com/docs/web-platform/view-transitions/).
+*   Убедитесь, что ваше выпадающее меню доступно для пользователей с клавиатурой (например, используйте `tabindex` и обработчики событий `focus`/`blur`).
+*   Проверьте, как меню выглядит на разных размерах экрана и устройствах.
+
+Какой метод отключения кликабельности и добавления выпадающего списка вы хотели бы применить? Я могу помочь с реализацией.

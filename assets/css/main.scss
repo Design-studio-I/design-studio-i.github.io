@@ -1,0 +1,113 @@
+---
+---
+@import "minimal-mistakes"; 
+
+/* --- ТОТАЛЬНЫЙ РЕБРЕНДИНГ --- */
+
+// Уменьшаем логотип и меню везде
+.masthead__inner-logo { font-size: 1.1rem !important; }
+.masthead__menu-item a { font-size: 0.8rem !important; opacity: 0.7; &:hover { opacity: 1; } }
+
+// Делаем футер (подвал) незаметным
+.page__footer {
+  padding: 1em 0 !important;
+  font-size: 0.7rem !important;
+  border-top: 1px solid #f2f2f2 !important;
+}
+
+// Убираем огромные пустые поля по бокам на всех страницах
+.inner {
+  max-width: 1000px !important;
+}
+
+// Отключаем огромные заголовки
+h1 { font-size: 1.5rem !important; letter-spacing: -1px; } 
+
+/* Оживляем выпадающее меню */
+.masthead__menu-item {
+  position: relative;
+
+  &:hover {
+    .dropdown-menu {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+}
+
+.dropdown-menu {
+  display: none; /* Скрыто по умолчанию */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  min-width: 200px;
+  background-color: #fff;
+  border: 1px solid #f2f2f2;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  padding: 10px 0;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+
+  li {
+    margin: 0;
+    
+    a {
+      display: block;
+      padding: 8px 20px;
+      color: #333 !important;
+      font-size: 0.9em;
+      text-decoration: none;
+
+      &:hover {
+        background-color: #f8f8f8;
+        color: #faa !important; /* Твой фирменный розовый */
+      }
+    }
+  }
+} 
+
+/* Прячем выпадашку по умолчанию */
+.masthead__menu-item ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 200px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  z-index: 999;
+}
+
+/* Показываем ПРИ НАВЕДЕНИИ на родительский li */
+.masthead__menu-item:hover > ul {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Оформляем ссылки внутри выпадашки */
+.masthead__menu-item ul li {
+  width: 100%;
+  padding: 0;
+}
+
+.masthead__menu-item ul li a {
+  display: block;
+  padding: 10px 20px;
+  color: #333 !important;
+  font-size: 0.9em;
+}
+
+.masthead__menu-item ul li a:hover {
+  background-color: #fdf2f2;
+  color: #faa !important;
+}
