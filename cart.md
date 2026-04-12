@@ -223,9 +223,9 @@ function ringBell() {
     
     // Эффект звука и вибрации
     setTimeout(() => {
-        #bell.classList.remove('ring-animation');
+        bell.classList.remove('ring-animation');
         // Если корзина не пуста, плавно скроллим к кнопке заказа
-        #document.querySelector('.checkout-btn')?.scrollIntoView({behavior: 'smooth'});
+        document.querySelector('.checkout-btn')?.scrollIntoView({behavior: 'smooth'});
     }, 500);
 }
 
