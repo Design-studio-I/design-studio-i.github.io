@@ -187,12 +187,12 @@ sidebar:
 </style>
 
 <div class="product-grid">
-  {% for item in site.data.merch.accessories.merch %}
+  {% for item in site.data.merch.accessories %}
     <div class="product-card" data-id="{{ item.slug }}" data-img="{{ item.image }}">
       
       <div class="pocket-stub"></div>
       
-      <a href="/merch/item/?id={{ item.slug }}&cat=accessories" style="text-decoration: none; width: 100%;">
+      <a href="/merch/accessories/?id={{ item.slug }}&cat=accessories" style="text-decoration: none; width: 100%;">
         <img src="{{ item.image }}" alt="{{ item.title }}" class="merch-img">
         <span class="product-card-title">{{ item.title }}</span>
       </a>
