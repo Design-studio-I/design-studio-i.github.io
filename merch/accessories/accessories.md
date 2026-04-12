@@ -3,7 +3,7 @@ layout: single
 title: "Твоя идентичность"
 permalink: /merch/accessories/
 sidebar:
-  nav: "main"
+nav: "merch_sidebar"
 ---
 
 <style> 
