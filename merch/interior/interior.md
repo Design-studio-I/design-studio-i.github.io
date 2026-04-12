@@ -3,7 +3,7 @@ layout: single
 title: "Создание аутентичной атмосферы пространства"
 permalink: /merch/interior/
 sidebar:
-  nav: "main"
+  nav: "merch_sidebar"
 ---
 
 <style> 
