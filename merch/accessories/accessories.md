@@ -186,9 +186,13 @@ sidebar:
 }
 </style>
 
-<div class="product-grid">
+<div class="entries-grid">
   {% for item in site.data.merch.accessories %}
-    <div class="product-card" data-id="{{ item.slug }}" data-img="{{ item.image }}">
+    <div class="entry">
+      <img src="{{ item.image | relative_url }}" alt="{{ item.name }}">
+      <h3>{{ item.name }}</h3>
+      <p>{{ item.description }}</p>
+      <strong>Цена: {{ item.price }}</strong>
       
       <div class="pocket-stub"></div>
       
