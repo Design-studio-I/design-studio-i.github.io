@@ -3,7 +3,7 @@ layout: single
 title: ""
 permalink: /merch/
 sidebar:
-  nav: "main"
+  nav: "merch_sidebar"
 ---
 
 <div class="merch-studio">
