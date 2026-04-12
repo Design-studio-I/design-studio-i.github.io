@@ -1,8 +1,9 @@
 ---
 layout: single
-title: 
+title: "Просмотр товара"
+permalink: /merch/item/
 sidebar:
-  nav: "main"
+  nav: "merch_sidebar"
 ---
 
 <style>
