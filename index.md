@@ -3,7 +3,7 @@ layout: single
 author_profile: true
 title: "Студия авторского дизайна и вышивки"
 header:
-  overlay_color: "#faa"
+  overlay_color: "ffffff"
   overlay_filter: "0.5"
   overlay_image: /assets/images/studio-hero.png # Положи сюда сочное фото процесса или лучшей работы
   cta_label: "Вырази себя"
