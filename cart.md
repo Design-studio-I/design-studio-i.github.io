@@ -217,12 +217,12 @@ sidebar:
 <script>
 document.addEventListener('DOMContentLoaded', renderCart);
 
-#function ringBell() {
-    #const bell = document.getElementById('call-bell');
-    #bell.classList.add('ring-animation');
+function ringBell() {
+    const bell = document.getElementById('call-bell');
+    bell.classList.add('ring-animation');
     
-    #// Эффект звука и вибрации
-    #setTimeout(() => {
+    // Эффект звука и вибрации
+    setTimeout(() => {
         #bell.classList.remove('ring-animation');
         // Если корзина не пуста, плавно скроллим к кнопке заказа
         #document.querySelector('.checkout-btn')?.scrollIntoView({behavior: 'smooth'});
