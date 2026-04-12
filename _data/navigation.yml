@@ -1,36 +1,29 @@
+# Верхнее горизонтальное меню
 main:
-  - title: "Студия"
+  - title: "Главная"
     url: /
-  
-  - title: "Читальня"
-    url: /blog/
-
-  - title: "Прилавок"
+  - title: "Мерч"
     url: /merch/
-    children:
-      - title: "Бизнесу"
-        url: /merch/business/
-      - title: "Интерьер"
-        url: /merch/interior/
-      - title: "Для дома"
-        url: /merch/home/
-      - title: "Одежда"
-        url: /merch/clothes/
-      - title: "Аксессуары"
-        url: /merch/accessories/
-      - title: "Постельное белье"
-        url: /merch/bed_linen/
-      - title: "Детям"
-        url: /merch/kids/
-      - title: "Игрушки"
-        url: /merch/toys/
-      - title: "Автомобилистам"
-        url: /merch/auto/
-      - title: "Дизайн для вышивальных машин"
-        url: /merch/design/
-
-  - title: "Моя корзинка"
-    url: /cart/
-
+  - title: "Блог"
+    url: /blog/
+  - title: "О нас"
+    url: /about/
   - title: "Контакты"
     url: /contacts/
+
+# Боковое меню для разделов мерча (остается только здесь)
+merch_sidebar:
+  - title: "Категории мерча"
+    children:
+      - title: "Аксессуары"
+        url: /merch/accessories/accessories/
+      - title: "Авто"
+        url: /merch/auto/auto/
+      - title: "Постельное белье"
+        url: /merch/bed_linen/bed_linen/
+      - title: "Бизнес"
+        url: /merch/business/business/
+      - title: "Одежда"
+        url: /merch/clothes/clothes/
+      - title: "Дизайн"
+        url: /merch/design/design/
