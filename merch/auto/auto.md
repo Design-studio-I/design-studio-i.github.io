@@ -3,7 +3,7 @@ layout: single
 title: "Твой конь"
 permalink: /merch/auto/
 sidebar:
-  nav: "main"
+  nav: "merch_sidebar"
 ---
 
 <style>
