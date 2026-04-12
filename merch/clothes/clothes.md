@@ -3,7 +3,7 @@ layout: single
 title: "Твой стиль"
 permalink: /merch/clothes/
 sidebar:
-  nav: "main"
+  nav: "merch_sidebar"
 ---
 
 <style> 
