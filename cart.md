@@ -1,9 +1,9 @@
 ---
 layout: single
-title: "Это всё мне!"
+title: "Это всё мне! Моё!!!"
 permalink: /cart/
 sidebar:
-  nav: "main"
+nav: "merch_sidebar"
 ---
 <style> 
   /* Фон всей страницы */
