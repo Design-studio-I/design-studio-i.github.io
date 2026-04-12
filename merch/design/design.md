@@ -3,7 +3,7 @@ layout: single
 title: "Дизайн для вышивальных машин"
 permalink: /merch/design/
 sidebar:
-  nav: "main"
+  nav: "merch_sidebar"
 ---
 
 <style> 
