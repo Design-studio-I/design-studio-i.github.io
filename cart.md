@@ -21,12 +21,12 @@ sidebar:
   }
 </style>
 <div class="vintage-shop">
-  <div class="call-bell-wrapper" onclick="ringBell()">
-    <div class="bell-label">ПОЗВАТЬ ХОЗЯЙКУ</div>
-    <div id="call-bell" class="call-bell">
-      <div class="bell-top"></div>
-      <div class="bell-base"></div>
-    </div>
+  #<div class="call-bell-wrapper" onclick="ringBell()">
+    #<div class="bell-label">ПОЗВАТЬ ХОЗЯЙКУ</div>
+    #<div id="call-bell" class="call-bell">
+      #<div class="bell-top"></div>
+      #<div class="bell-base"></div>
+    #</div>
   </div>
 
   <div id="cart-container" class="cart-wrapper">
@@ -65,7 +65,7 @@ sidebar:
   }
 
   /* --- ЗВОНОЧЕК (Call Bell) --- */
-  #.call-bell-wrapper {
+  .call-bell-wrapper {
     position: absolute;
     top: 20px;
     right: 30px;
@@ -73,20 +73,20 @@ sidebar:
     cursor: pointer;
     z-index: 10;
   }
-  #.bell-label {
+  .bell-label {
     font-size: 0.7rem;
     font-weight: bold;
     color: #520;
     margin-bottom: 5px;
     letter-spacing: 1px;
   }
-  #.call-bell {
+  .call-bell {
     width: 60px;
     height: 45px;
     position: relative;
     transition: transform 0.1s;
   }
-  #.bell-top {
+  .bell-top {
     width: 50px;
     height: 30px;
     background: radial-gradient(circle at 30% 30%, #ffd700, #b8860b);
@@ -95,7 +95,7 @@ sidebar:
     border: 1px solid rgba(0,0,0,0.2);
     position: relative;
   }
-  #.bell-top::after {
+  .bell-top::after {
     content: '';
     position: absolute;
     top: -5px; left: 50%;
@@ -104,17 +104,17 @@ sidebar:
     background: #8b4513;
     border-radius: 3px;
   }
-  #.bell-base {
+  .bell-base {
     width: 60px;
     height: 8px;
     background: #333;
     border-radius: 4px;
     margin-top: -2px;
   }
-  #.ring-animation {
+  .ring-animation {
     animation: bell-ring 0.1s infinite;
   }
-  #@keyframes bell-ring {
+  @keyframes bell-ring {
     0% { transform: rotate(0); }
     25% { transform: rotate(5deg); }
     75% { transform: rotate(-5deg); }
