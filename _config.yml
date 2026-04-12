@@ -11,10 +11,10 @@ locale: "ru-RU"
 # ТЕМА И ПЛАГИНЫ
 # ==========================================
 # Если используешь тему как Gem (стандарт для локалки):
-theme: minimal-mistakes-jekyll
+# remote_theme: "mmistakes/minimal-mistakes"
 
 # Если деплоишь на GitHub Pages, раскомментируй строку ниже:
-# remote_theme: "mmistakes/minimal-mistakes"
+ remote_theme: "mmistakes/minimal-mistakes"
 
 plugins:
   - jekyll-paginate
