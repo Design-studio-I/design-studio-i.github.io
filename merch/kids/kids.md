@@ -3,7 +3,7 @@ layout: single
 title: "Детский мир"
 permalink: /merch/kids/
 sidebar:
-  nav: "main"
+  nav: "merch_sidebar"
 ---
 
 <style> 
