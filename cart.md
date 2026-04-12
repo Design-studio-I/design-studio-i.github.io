@@ -5,7 +5,21 @@ permalink: /cart/
 sidebar:
   nav: "main"
 ---
+<style> 
+  /* Фон всей страницы */
+  body.layout--single {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), 
+                      url('{{ "/assets/images/bg/bg_cloud.jpg" | relative_url }}') !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
 
+  /* Убираем лишние белые фоны темы */
+  #main, .page, .archive, .inner {
+    background: transparent !important;
+  }
+</style>
 <div class="vintage-shop">
   <div class="call-bell-wrapper" onclick="ringBell()">
     <div class="bell-label">ПОЗВАТЬ ХОЗЯЙКУ</div>
