@@ -6,8 +6,8 @@ main:
     url: /merch/
   - title: "Блог"
     url: /blog/
-  - title: "О нас"
-    url: /about/
+  - title: "Корзинка"
+    url: /cart/
   - title: "Контакты"
     url: /contacts/
 
