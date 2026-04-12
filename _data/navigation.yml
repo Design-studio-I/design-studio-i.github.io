@@ -27,3 +27,11 @@ merch_sidebar:
         url: /merch/clothes/clothes/
       - title: "Дизайн"
         url: /merch/design/design/
+      - title: "Для дома"
+        url: /merch/home/home/
+      - title: "Интерьер"
+        url: /merch/interior/interior/
+      - title: "Детское"
+        url: /merch/kids/kids/
+      - title: "Игрушки"
+        url: /merch/toys/toys/
