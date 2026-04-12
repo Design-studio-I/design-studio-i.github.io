@@ -21,12 +21,12 @@ sidebar:
   }
 </style>
 <div class="vintage-shop">
-  #<div class="call-bell-wrapper" onclick="ringBell()">
-    #<div class="bell-label">ПОЗВАТЬ ХОЗЯЙКУ</div>
-    #<div id="call-bell" class="call-bell">
-      #<div class="bell-top"></div>
-      #<div class="bell-base"></div>
-    #</div>
+  <div class="call-bell-wrapper" onclick="ringBell()">
+    <div class="bell-label">ПОЗВАТЬ ХОЗЯЙКУ</div>
+    <div id="call-bell" class="call-bell">
+      <div class="bell-top"></div>
+      <div class="bell-base"></div>
+    </div>
   </div>
 
   <div id="cart-container" class="cart-wrapper">
@@ -48,7 +48,7 @@ sidebar:
 <style>
   /* --- ПРИЛАВОК --- */
   .vintage-shop {
-    background-image: url('/assets/images/bg/bg_0002.jpg') !important; /* Твоя мешковина */
+    #background-image: url('/assets/images/bg/bg_0002.jpg') !important; /* Твоя мешковина */
     background-size: cover;
     padding: 40px 20px;
     border-radius: 15px;
