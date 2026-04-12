@@ -16,22 +16,22 @@ merch_sidebar:
   - title: "Категории мерча"
     children:
       - title: "Аксессуары"
-        url: /merch/accessories/accessories/
+        url: /merch/accessories/
       - title: "Авто"
-        url: /merch/auto/auto/
+        url: /merch/auto/
       - title: "Постельное белье"
-        url: /merch/bed_linen/bed_linen/
+        url: /merch/bed_linen/
       - title: "Бизнес"
-        url: /merch/business/business/
+        url: /merch/business/
       - title: "Одежда"
-        url: /merch/clothes/clothes/
+        url: /merch/clothes/
       - title: "Дизайн"
-        url: /merch/design/design/
+        url: /merch/design/
       - title: "Для дома"
-        url: /merch/home/home/
+        url: /merch/home/
       - title: "Интерьер"
-        url: /merch/interior/interior/
+        url: /merch/interior/
       - title: "Детское"
-        url: /merch/kids/kids/
+        url: /merch/kids/
       - title: "Игрушки"
-        url: /merch/toys/toys/
+        url: /merch/toys/
