@@ -3,7 +3,7 @@ layout: single
 title: "Айдентика и фирменный стиль"
 permalink: /merch/business/
 sidebar:
-  nav: "main"
+  nav: "merch_sidebar"
 ---
 
 <style> 
