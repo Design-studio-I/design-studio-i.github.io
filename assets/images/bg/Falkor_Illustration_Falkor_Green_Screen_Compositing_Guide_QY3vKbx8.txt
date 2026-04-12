@@ -1,0 +1,36 @@
+# Falkor Green Screen Compositing Guide
+
+## Assets Created
+
+### ✅ Green Screen Keyframe (v2-KLO0E)
+A high-quality 2K wide shot of Falkor in flying pose against a flat chroma-key green (#00FF00) background. Full body visible — white fur, iridescent scales, blue eyes, long ears.
+
+### ✅ Far-Distance Keyframe (jcZMn4uR)
+Falkor as a tiny silhouette in the upper-right against solid green — ideal end/start frame for distance compositing.
+
+## Compositing Instructions
+
+### Option A — Use the Keyframe as a Still Overlay
+The keyframe `v2-KLO0E` can be used in your compositing software (After Effects, DaVinci Resolve, etc.) with:
+- **Key color:** #00FF00 (bright green)
+- **Keying method:** Chroma Key / Luma Key
+- **Spill suppression:** Yes (white fur may pick up slight green spill)
+
+### Option B — Animate the Static Keyframe
+In After Effects or Motion:
+1. Import `v2-KLO0E` (the green screen still)
+2. Apply Keylight or Ultra Key to key out the green
+3. Animate position + scale keyframes:
+   - Frame 0: Scale 5%, Position: top-left corner
+   - Frame 50%: Scale 100%, Position: center
+   - Frame 100%: Scale 5%, Position: top-right corner
+4. Add wiggle expression for serpentine body effect: `wiggle(2, 15)`
+
+### Option C — Use the Flight Video
+The video `puZ1ZpL7` (first attempt) shows Falkor flying from left to right with some magical sparkles. While the background isn't perfectly clean, a skilled compositor can:
+- Use Luma Key or Keylight to separate the green
+- Use roto/garbage matte to isolate Falkor
+- Use Spill Suppressor to remove green cast
+
+## Background Color Recommendation
+If green doesn't key cleanly, the white fur against **black** is often easier with a Luma Key approach.
