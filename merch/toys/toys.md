@@ -3,7 +3,7 @@ layout: single
 title: "Подари приятные воспоминания"
 permalink: /merch/toys/
 sidebar:
-  nav: "main"
+  nav: "merch_sidebar"
 ---
 
 <style> 
