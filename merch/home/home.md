@@ -3,7 +3,7 @@ layout: single
 title: "Домашнее тепло и уют"
 permalink: /merch/home/
 sidebar:
-  nav: "main"
+  nav: "merch_sidebar"
 ---
 
 <style> 
