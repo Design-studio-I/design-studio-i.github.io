@@ -1,67 +1,39 @@
 # ==========================================
-# ОСНОВНЫЕ НАСТРОЙКИ (БЕЗ ТАБУЛЯЦИЙ!)
+# ОСНОВНЫЕ НАСТРОЙКИ
 # ==========================================
 title: "Студия авторской вышивки"
 description: "Дизайн, мерч и уникальные решения"
-url: https://design-studio-i.github.io
-baseurl: "" # Оставь пустым, если сайт в корне домена
+url: "https://design-studio-i.github.io"
+baseurl: ""
 locale: "ru-RU"
 
 # ==========================================
 # ТЕМА И ПЛАГИНЫ
 # ==========================================
-# Если используешь тему как Gem (стандарт для локалки):
-# remote_theme: "mmistakes/minimal-mistakes"
-
-# Если деплоишь на GitHub Pages, раскомментируй строку ниже: 
 remote_theme: "mmistakes/minimal-mistakes"
 
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
-  - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
 
 # ==========================================
-# НАСТРОЙКИ ПРИЛАВКА (ДАННЫЕ)
+# ПАРАМЕТРЫ ТЕМЫ
 # ==========================================
-data_dir: _data
-
-# ==========================================
-# ПАРАМЕТРЫ ТЕМЫ (MINIMAL MISTAKES)
-# ==========================================
-minimal_mistakes_skin: "default" # Можно поменять на "air", "aqua", "dirt" и т.д.
-
-# Навигация (берется из _data/navigation.yml)
+minimal_mistakes_skin: "default"
 site_navigation: main
 
-# Катинка в шапке (если хочешь на все страницы сразу)
-# header:
-#   overlay_image: /assets/images/header-bg.jpg
-
 # ==========================================
-# ТИПОГРАФИКА И СТИЛИ (SASS)
-# ==========================================
-sass:
-  sass_dir: _sass
-  style: compressed
-
-# ==========================================
-# НАСТРОЙКИ ПО УМОЛЧАНИЮ (DEFAULTS)
+# НАСТРОЙКИ ПО УМОЛЧАНИЮ
 # ==========================================
 defaults:
-  # Страницы
   - scope:
       path: ""
       type: "pages"
     values:
       layout: "single"
       author_profile: true
-      sidebar:
-        nav: "main" # Если хочешь боковое меню
-  
-  # Посты блога
   - scope:
       path: ""
       type: "posts"
@@ -69,10 +41,9 @@ defaults:
       layout: "single"
       author_profile: true
       read_time: true
-      comments: false
 
 # ==========================================
-# ИСКЛЮЧЕНИЯ (ЧТО НЕ НУЖНО КОМПИЛИРОВАТЬ)
+# ИСКЛЮЧЕНИЯ
 # ==========================================
 exclude:
   - Gemfile
