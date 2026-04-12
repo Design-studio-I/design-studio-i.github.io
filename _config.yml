@@ -3,7 +3,7 @@
 # ==========================================
 title: "Студия авторской вышивки"
 description: "Дизайн, мерч и уникальные решения"
-url: "http://localhost:4000"
+url: https://design-studio-i.github.io
 baseurl: "" # Оставь пустым, если сайт в корне домена
 locale: "ru-RU"
 
