@@ -13,8 +13,8 @@ locale: "ru-RU"
 # Если используешь тему как Gem (стандарт для локалки):
 # remote_theme: "mmistakes/minimal-mistakes"
 
-# Если деплоишь на GitHub Pages, раскомментируй строку ниже:
- remote_theme: "mmistakes/minimal-mistakes"
+# Если деплоишь на GitHub Pages, раскомментируй строку ниже: 
+remote_theme: "mmistakes/minimal-mistakes"
 
 plugins:
   - jekyll-paginate
