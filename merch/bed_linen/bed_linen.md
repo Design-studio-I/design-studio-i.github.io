@@ -3,7 +3,7 @@ layout: single
 title: "Постельное бельё"
 permalink: /merch/bed_linen/
 sidebar:
-  nav: "main"
+  nav: "merch_sidebar"
 ---
 
 <style>
