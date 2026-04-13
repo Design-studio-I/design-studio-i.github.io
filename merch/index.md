@@ -98,7 +98,7 @@ sidebar:
 
   /* 3. ОБЩИЕ СТИЛИ СТУДИИ */
   .merch-studio { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 20px 10px; }
-  .panel-center { width: 400px; display: flex; flex-direction: column; align-items: center; }
+  .panel-center { width: 400px; display: flex; flex-direction: column; align-items: center; background: transparent; }
   .v-container { position: relative; width: 400px; height: 500px; background: transparent; }
   #product-base-img { width: 100%; height: 100%; object-fit: contain; position: absolute; z-index: 1; pointer-events: none; }
   #main-canvas { position: absolute; z-index: 2; cursor: move; }
