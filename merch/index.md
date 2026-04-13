@@ -7,6 +7,13 @@ sidebar:
 ---
 
 <div class="merch-studio">
+    <div class="panel-center">
+        <div class="v-container">
+            <img id="product-base-img" src="">
+            <canvas id="main-canvas" width="400" height="500"></canvas>
+        </div>
+    </div>
+
     <div class="panel-side side-left">
         <label class="t-lab">1. КТО ЗАКАЗЧИК?</label>
         <div class="btn-group">
@@ -19,20 +26,13 @@ sidebar:
         <div id="color-grid" class="c-grid"></div>
 
         <label class="t-lab">3. СТОРОНА</label>
-        <div class="btn-group">
+        <div class="btn-group-row">
             <button id="side-f" class="s-btn active" onclick="toggleSide('f')">ГРУДЬ</button>
             <button id="side-b" class="s-btn" onclick="toggleSide('b')">СПИНА</button>
         </div>
         
         <div class="cart-status" id="cart-counter">В наборе: 0 поз.</div>
         <button class="clear-btn" onclick="clearAllData()">Сбросить всё</button>
-    </div>
-
-    <div class="panel-center">
-        <div class="v-container">
-            <img id="product-base-img" src="">
-            <canvas id="main-canvas" width="400" height="500"></canvas>
-        </div>
     </div>
 
     <div class="panel-side side-right">
@@ -76,31 +76,77 @@ sidebar:
     background-position: center !important;
   }
 
-  /* Убираем лишние белые фоны темы */
-  #main, .page, .archive, .inner {
-    background: transparent !important;
+  /* Убираем лишние фоны темы */
+  #main, .page, .archive, .inner { background: transparent !important; }
+
+  /* Контейнер студии */
+  .merch-studio { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 20px; 
+    padding: 10px; 
+    min-height: 100vh; 
+    font-family: 'Segoe UI', sans-serif; 
   }
 
-    .merch-studio { display: flex; justify-content: center; gap: 20px; padding: 20px; background: #f0f0f0; min-height: 100vh; font-family: 'Segoe UI', sans-serif; }
-    .panel-side { width: 260px; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-    .panel-center { width: 420px; display: flex; flex-direction: column; align-items: center; }
-    .v-container { position: relative; width: 400px; height: 500px; background: white; border-radius: 10px; overflow: hidden; border: 1px solid #ddd; }
-    #product-base-img { width: 100%; height: 100%; object-fit: contain; position: absolute; z-index: 1; pointer-events: none; }
-    #main-canvas { position: absolute; z-index: 2; cursor: move; }
-    .t-lab { font-size: 10px; font-weight: 900; color: #888; margin-top: 15px; display: block; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #eee; padding-bottom: 3px; }
-    .c-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin-top: 10px; }
-    .c-pill { height: 24px; border-radius: 4px; cursor: pointer; border: 1px solid #ddd; }
-    .btn-group { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
-    .g-btn, .s-btn { padding: 10px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 6px; font-weight: bold; font-size: 12px; }
-    .active { background: #333 !important; color: white !important; }
-    .u-area { width: 100%; height: 60px; margin-top: 10px; padding: 10px; box-sizing: border-box; border-radius: 6px; border: 1px solid #ddd; font-family: inherit; }
-    .u-sel, .u-col { width: 100%; margin-top: 10px; padding: 10px; border-radius: 6px; border: 1px solid #ddd; }
-    .r-box { display: flex; justify-content: space-between; font-size: 11px; margin-top: 10px; align-items: center; }
-    .add-btn { width: 100%; padding: 12px; background: #888; color: white; border: none; border-radius: 8px; margin-top: 15px; cursor: pointer; font-weight: bold; }
-    .buy-btn { width: 100%; padding: 16px; background: #28a745; color: white; border: none; border-radius: 8px; margin-top: 10px; cursor: pointer; font-weight: 900; font-size: 14px; }
-    .cart-status { margin-top: 20px; padding: 10px; background: #f8f9fa; border-radius: 6px; text-align: center; font-weight: bold; font-size: 12px; }
-    .clear-btn { width: 100%; border: none; background: none; cursor: pointer; text-decoration: underline; color: #bbb; font-size: 10px; margin-top: 5px; }
-    hr { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
+  /* Боковые панели */
+  .panel-side { 
+    width: 280px; 
+    background: white; 
+    padding: 20px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    height: fit-content;
+  }
+
+  /* Центральная панель — ТУТ УБРАЛ СЕРЫЙ ФОН */
+  .panel-center { 
+    width: 400px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  /* Контейнер футболки */
+  .v-container { 
+    position: relative; 
+    width: 400px; 
+    height: 500px; 
+    background: transparent; /* Сделал прозрачным */
+    border-radius: 10px; 
+    overflow: hidden; 
+  }
+
+  #product-base-img { width: 100%; height: 100%; object-fit: contain; position: absolute; z-index: 1; pointer-events: none; }
+  #main-canvas { position: absolute; z-index: 2; cursor: move; }
+
+  /* Типографика и элементы */
+  .t-lab { font-size: 10px; font-weight: 900; color: #888; margin-top: 15px; display: block; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #eee; padding-bottom: 3px; }
+  .c-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin-top: 10px; }
+  .c-pill { height: 24px; border-radius: 4px; cursor: pointer; border: 1px solid #ddd; }
+  .btn-group, .btn-group-row { display: flex; gap: 5px; margin-top: 10px; }
+  .btn-group { flex-direction: column; }
+  .g-btn, .s-btn { padding: 10px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 6px; font-weight: bold; font-size: 12px; transition: 0.3s; }
+  .active { background: #333 !important; color: white !important; }
+  .u-area { width: 100%; height: 60px; margin-top: 10px; padding: 10px; box-sizing: border-box; border-radius: 6px; border: 1px solid #ddd; font-family: inherit; }
+  .u-sel, .u-col { width: 100%; margin-top: 10px; padding: 10px; border-radius: 6px; border: 1px solid #ddd; }
+  .r-box { display: flex; justify-content: space-between; font-size: 11px; margin-top: 10px; align-items: center; }
+  .add-btn { width: 100%; padding: 12px; background: #888; color: white; border: none; border-radius: 8px; margin-top: 15px; cursor: pointer; font-weight: bold; }
+  .buy-btn { width: 100%; padding: 16px; background: #28a745; color: white; border: none; border-radius: 8px; margin-top: 10px; cursor: pointer; font-weight: 900; font-size: 14px; }
+  .cart-status { margin-top: 20px; padding: 10px; background: #f8f9fa; border-radius: 6px; text-align: center; font-weight: bold; font-size: 12px; }
+  .clear-btn { width: 100%; border: none; background: none; cursor: pointer; text-decoration: underline; color: #bbb; font-size: 10px; margin-top: 5px; }
+
+  /* Адаптация под смартфоны */
+  @media (max-width: 768px) {
+    .merch-studio { flex-direction: column; align-items: center; }
+    .panel-center { order: -1; width: 100%; } /* Футболка сверху */
+    .v-container { width: 320px; height: 400px; margin: 0 auto; }
+    #main-canvas { width: 320px; height: 400px; }
+    .panel-side { width: 100%; max-width: 320px; }
+    .btn-group-row { flex-direction: row; }
+    .s-btn { flex: 1; }
+  }
 </style>
 
 <script>
@@ -288,7 +334,7 @@ function updateVisual() {
 }
 
 function setupDrag() {
-    const getP = (e) => { const r = canvas.getBoundingClientRect(); return { x: (e.clientX || e.touches[0].clientX) - r.left, y: (e.clientY || e.touches[0].clientY) - r.top }; };
+    const getP = (e) => { const r = canvas.getBoundingClientRect(); return { x: (e.clientX || (e.touches && e.touches[0].clientX)) - r.left, y: (e.clientY || (e.touches && e.touches[0].clientY)) - r.top }; };
     canvas.onmousedown = canvas.ontouchstart = (e) => {
         const p = getP(e), dT = Math.hypot(p.x - state.text.x, p.y - state.text.y), dL = Math.hypot(p.x - state.logo.x, p.y - state.logo.y);
         if (dT < dL && dT < 50) state.text.drag = true; else if (dL < 80) state.logo.drag = true;
