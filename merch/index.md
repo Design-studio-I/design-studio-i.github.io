@@ -98,9 +98,9 @@ sidebar:
 
   /* 3. ОБЩИЕ СТИЛИ СТУДИИ */
   .merch-studio { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 20px 10px; }
-  .panel-center { width: 400px; display: flex; flex-direction: column; align-items: center; background: transparent; }
-  .v-container { position: relative; width: 400px; height: 500px; background: transparent; }
-  #product-base-img { width: 100%; height: 100%; object-fit: contain; position: absolute; z-index: 1; pointer-events: none; }
+  .panel-center { width: 400px; display: flex; flex-direction: column; align-items: center; background: transparent !important; }
+  .v-container { position: relative; width: 400px; height: 500px; background: transparent !important; }
+  #product-base-img { width: 100%; height: 100%; object-fit: contain; position: absolute; z-index: 1; pointer-events: none; background: transparent !important; }
   #main-canvas { position: absolute; z-index: 2; cursor: move; }
 
   /* ПАНЕЛИ УПРАВЛЕНИЯ */
@@ -108,7 +108,7 @@ sidebar:
   .t-lab { font-size: 9px; font-weight: 900; color: #999; margin-top: 10px; display: block; text-transform: uppercase; border-bottom: 1px solid #eee; }
   .btn-group, .btn-group-row { display: flex; gap: 5px; margin-top: 5px; }
   .g-btn, .s-btn { flex: 1; padding: 8px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 6px; font-size: 10px; font-weight: bold; }
-  .active { background: transparent !important; color: white !important; }
+  .active { background: transparent !important; }
   .c-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 10px; }
   .c-pill { height: 35px; border-radius: 6px; border: 1px solid #ddd; cursor: pointer; }
   .u-area { width: 100%; height: 50px; margin-top: 5px; border-radius: 6px; border: 1px solid #ddd; padding: 8px; }
