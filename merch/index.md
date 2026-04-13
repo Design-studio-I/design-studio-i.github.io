@@ -147,7 +147,62 @@ sidebar:
   .u-area { width: 100%; height: 45px; margin-top: 5px; padding: 5px; font-size: 11px; border-radius: 4px; border: 1px solid #ddd; }
   .u-sel, .u-col { width: 100%; margin-top: 5px; padding: 5px; }
   .add-btn { width: 100%; padding: 10px; background: #666; color: white; border: none; border-radius: 6px; margin-top: 10px; }
-  .buy-btn { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 6px; margin-top: 8px; font-weight: 900; }
+  .buy-btn { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 6px; margin-top: 8px; font-weight: 900; } 
+  
+  /* 1. Глобальные исправления слоев */
+  .masthead { z-index: 10 !important; } /* Шапка сайта */
+  .initial-content { z-index: 5 !important; }
+  
+  /* 2. Настройка бокового меню (sidebar) */
+  .sidebar {
+    z-index: 20 !important; /* Выше майки */
+    background: white !important;
+  }
+  
+  /* 3. Ограничиваем майку, чтобы она не раздувалась */
+  .panel-center {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background: white;
+  }
+
+  /* 4. Магия для мобильных устройств */
+  @media (max-width: 768px) {
+    /* Чтобы категории не прятались, делаем меню статичным и видимым */
+    .nav__list {
+      display: block !important; 
+      position: relative;
+      z-index: 30 !important;
+    }
+
+    /* Фиксируем майку, но даем ей строгий размер */
+    .panel-center {
+      position: fixed;
+      top: 50px; /* Сразу под кнопкой меню */
+      left: 0;
+      height: 220px; /* Ограничиваем высоту, чтобы не была огромной */
+      z-index: 2;
+      border-bottom: 2px solid #eee;
+    }
+
+    .v-container {
+      width: 180px; /* Уменьшаем визуально саму майку */
+      height: 210px;
+      margin: 0 auto;
+    }
+
+    /* Настройки управления начинаются ниже майки */
+    .merch-studio {
+      padding-top: 270px !important; 
+    }
+
+    /* ГЛАВНОЕ: Если меню открыто (тема Jekyll добавляет класс), прячем майку */
+    body.nav-open .panel-center, 
+    .nav__list[style*="display: block"] ~ .merch-studio .panel-center {
+      display: none !important;
+    }
+  }
 </style>
 
 <script>
