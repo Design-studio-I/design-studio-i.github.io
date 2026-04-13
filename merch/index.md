@@ -75,13 +75,18 @@ sidebar:
     background-size: cover !important;
   }
 
-  /* Полное удаление кнопки Follow и лишних надписей */
+  /* Очистка контента от белого фона темы Minimal Mistakes */
+  .page__content, .page__inner-wrap, .archive { 
+    background: transparent !important; 
+  }
+
+  /* Удаление кнопки Follow и футера */
   .author__follow, .follow-button, .sidebar .author__follow, .author__urls-wrapper, .page__footer { 
     display: none !important; 
   }
 
   /* 2. ПРОЗРАЧНОЕ МЕНЮ */
-  .masthead { background: rgba(255,255,255,0) !important; border-bottom: none !important; }
+  .masthead { background: transparent !important; border-bottom: none !important; }
   .nav__list, .sidebar, .sidebar.sticky {
     background: transparent !important;
     border: none !important;
@@ -89,26 +94,59 @@ sidebar:
   }
   .nav__items a {
     background: rgba(255, 255, 255, 0) !important;
-    margin-bottom: 2px;
-    border-radius: 4px;
-    padding: 8px 12px !important;
     color: #333 !important;
     font-weight: bold;
   }
 
-  /* 3. ОБЩИЕ СТИЛИ СТУДИИ */
+  /* 3. ОБЩИЕ СТИЛИ СТУДИИ (ДЕСКТОП) */
   .merch-studio { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 20px 10px; }
-  .panel-center { width: 400px; display: flex; flex-direction: column; align-items: center; background: transparent !important; }
-  .v-container { position: relative; width: 400px; height: 500px; background: transparent !important; }
-  #product-base-img { width: 100%; height: 100%; object-fit: contain; position: absolute; z-index: 1; pointer-events: none; background: transparent !important; }
-  #main-canvas { position: absolute; z-index: 2; cursor: move; }
+  
+  .panel-center { 
+    width: 400px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    background: transparent !important; 
+  }
+
+  .v-container { 
+    position: relative; 
+    width: 400px; 
+    height: 500px; 
+    background: transparent !important; 
+  }
+
+  #product-base-img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+    position: absolute; 
+    z-index: 1; 
+    pointer-events: none; 
+  }
+
+  #main-canvas { 
+    position: absolute; 
+    z-index: 2; 
+    cursor: move; 
+    top: 0; 
+    left: 0; 
+  }
 
   /* ПАНЕЛИ УПРАВЛЕНИЯ */
-  .panel-side { width: 280px; background: transparent; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-size: 0.85rem; }
+  .panel-side { 
+    width: 280px; 
+    background: white; 
+    padding: 15px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    font-size: 0.85rem; 
+  }
+
   .t-lab { font-size: 9px; font-weight: 900; color: #999; margin-top: 10px; display: block; text-transform: uppercase; border-bottom: 1px solid #eee; }
   .btn-group, .btn-group-row { display: flex; gap: 5px; margin-top: 5px; }
   .g-btn, .s-btn { flex: 1; padding: 8px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 6px; font-size: 10px; font-weight: bold; }
-  .active { background: transparent !important; }
+  .active { background: #333 !important; color: white !important; }
   .c-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 10px; }
   .c-pill { height: 35px; border-radius: 6px; border: 1px solid #ddd; cursor: pointer; }
   .u-area { width: 100%; height: 50px; margin-top: 5px; border-radius: 6px; border: 1px solid #ddd; padding: 8px; }
@@ -116,10 +154,10 @@ sidebar:
   .add-btn { width: 100%; padding: 12px; background: #666; color: white; border: none; border-radius: 6px; margin-top: 15px; font-weight: bold; }
   .buy-btn { width: 100%; padding: 14px; background: #28a745; color: white; border: none; border-radius: 6px; margin-top: 8px; font-weight: 900; }
 
- /* 4. МОБИЛЬНАЯ АДАПТАЦИЯ */
+  /* 4. МОБИЛЬНАЯ АДАПТАЦИЯ (ЖЕСТКИЙ ФИКС) */
   @media (max-width: 768px) {
     .merch-studio { 
-      padding-top: 330px !important; /* Оставляем место под фиксированную майку */
+      padding-top: 310px !important; 
     }
     
     .panel-center { 
@@ -128,42 +166,47 @@ sidebar:
       left: 0; 
       width: 100%; 
       height: 250px; 
-      z-index: 100; /* Майка и текст над контентом */
-      background: transparent !important; /* Твой прозрачный фон */
+      z-index: 100; 
+      background: transparent !important; 
       display: flex;
       justify-content: center;
-      pointer-events: none; /* Пропускаем клики сквозь пустые зоны */
+      pointer-events: none;
     }
     
     .v-container { 
       width: 210px; 
       height: 250px; 
       margin: 0 auto;
-      position: relative; /* Критично для позиционирования текста */
+      position: relative !important; 
       background: transparent !important;
-      pointer-events: auto; /* Позволяем кликать по самой майке */
+      pointer-events: auto;
     }
 
     #product-base-img {
-      width: 100%;
-      height: 100%;
-      z-index: 1; /* Картинка майки внизу */
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 1; 
+      background: transparent !important;
     }
 
     #main-canvas { 
-      width: 210px; 
-      height: 250px; 
-      z-index: 2; /* ТЕКСТ СТРОГО НАД МАЙКОЙ */
-      position: absolute;
-      top: 0;
-      left: 0;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 210px !important; 
+      height: 250px !important; 
+      z-index: 2 !important; /* Текст над майкой */
     }
 
     .panel-side { 
       width: 95% !important; 
       margin: 10px auto !important; 
       position: relative; 
-      z-index: 10; /* Кнопки управления под майкой */
+      z-index: 10; 
+      background: white; /* Панели управления остаются белыми для читаемости */
     }
   }
 </style>
