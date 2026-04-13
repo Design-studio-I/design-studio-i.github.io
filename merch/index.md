@@ -1,3 +1,8 @@
+Понял, Бастиан. Сделаем «чистую установку» — вырезаем всё лишнее и собираем идеальный блок. Я убрал кнопку Follow, заставил меню быть прозрачным и аккуратно распределил слои, чтобы кнопки управления не воевали с майкой.
+
+Заменяй всё содержимое своего файла на этот код:
+
+HTML
 ---
 layout: single
 title: ""
@@ -66,146 +71,93 @@ sidebar:
 
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Pattaya&family=Rubik+Mono+One&family=Ruslan+Display&display=swap" rel="stylesheet">
 
-<style> 
-  /* ГЛОБАЛЬНЫЙ ФОН */
+<style>
+  /* 1. ГЛОБАЛЬНЫЙ ФОН И УДАЛЕНИЕ ХВОСТОВ ТЕМЫ */
   body.layout--single {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
                       url('{{ "/assets/images/bg/bg_cloud.jpg" | relative_url }}') !important;
     background-attachment: fixed !important;
     background-size: cover !important;
   }
 
-  /* ШАПКА САЙТА (MASTHEAD) */
-  .masthead { 
-    position: fixed !important; 
-    top: 0; 
-    width: 100%; 
-    z-index: 9000 !important; /* Очень высоко, чтобы быть над майкой */
-    background: #fff !important; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  /* Полное удаление кнопки Follow и лишних надписей */
+  .author__follow, .follow-button, .sidebar .author__follow, .author__urls-wrapper, .page__footer { 
+    display: none !important; 
   }
 
-  /* КНОПКА TOGGLE (МОБИЛЬНАЯ) */
-  .nav__toggle { 
-    z-index: 10000 !important; 
-    background: #333 !important;
+  /* 2. ПРОЗРАЧНОЕ МЕНЮ */
+  .masthead { background: rgba(255,255,255,0.8) !important; border-bottom: none !important; }
+  .nav__list, .sidebar, .sidebar.sticky {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .nav__items a {
+    background: rgba(255, 255, 255, 0.6) !important;
+    margin-bottom: 2px;
+    border-radius: 4px;
+    padding: 8px 12px !important;
+    color: #333 !important;
+    font-weight: bold;
   }
 
-  /* САМО РАЗВЕРНУТОЕ МЕНЮ (SIDEBAR / DROPDOWN) */
-  /* Убеждаемся, что когда оно открыто, оно ПЕРЕКРЫВАЕТ майку */
-  .sidebar.sticky, .nav__list {
-    z-index: 9500 !important;
-    background: white !important; /* Чтобы текст не накладывался на майку визуально */
-    padding: 10px;
-  }
-
-  /* СТУДИЯ */
+  /* 3. ОБЩИЕ СТИЛИ СТУДИИ */
   .merch-studio { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 20px 10px; }
-
-  /* ФУТБОЛКА (МОБИЛЬНАЯ ФИКСАЦИЯ) */
-  @media (max-width: 768px) {
-    .merch-studio { padding-top: 290px; } /* Отступ под майку */
-    
-    .panel-center { 
-        position: fixed; 
-        top: 44px; /* Сразу под узкой шапкой */
-        left: 0; 
-        width: 100%; 
-        height: 250px; 
-        z-index: 1000; /* Ниже меню (9000), но выше остального контента */
-        background: #fff; 
-        display: flex;
-        justify-content: center;
-        border-bottom: 1px solid #eee;
-        pointer-events: none;
-    }
-    .v-container { width: 210px; height: 240px; pointer-events: auto; margin: 0 auto; }
-    #main-canvas { width: 210px; height: 240px; }
-
-    /* Панели управления скроллятся под майкой */
-    .panel-side { 
-        width: 100%; 
-        border-radius: 0; 
-        box-shadow: none; 
-        border-bottom: 1px solid #eee; 
-        z-index: 500; 
-    }
-  }
-
-  /* Остальные стили десктопа */
-  .panel-center { width: 400px; }
-  .v-container { position: relative; width: 400px; height: 500px; }
+  .panel-center { width: 400px; display: flex; flex-direction: column; align-items: center; }
+  .v-container { position: relative; width: 400px; height: 500px; background: transparent; }
   #product-base-img { width: 100%; height: 100%; object-fit: contain; position: absolute; z-index: 1; pointer-events: none; }
   #main-canvas { position: absolute; z-index: 2; cursor: move; }
-  .panel-side { width: 260px; background: white; padding: 12px; border-radius: 10px; font-size: 0.85rem; }
-  .t-lab { font-size: 8px; font-weight: 900; color: #aaa; margin-top: 8px; display: block; text-transform: uppercase; border-bottom: 1px solid #eee; }
-  .btn-group, .btn-group-row { display: flex; gap: 4px; margin-top: 5px; }
-  .g-btn, .s-btn { padding: 6px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px; font-size: 10px; font-weight: bold; }
+
+  /* ПАНЕЛИ УПРАВЛЕНИЯ */
+  .panel-side { width: 280px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-size: 0.85rem; }
+  .t-lab { font-size: 9px; font-weight: 900; color: #999; margin-top: 10px; display: block; text-transform: uppercase; border-bottom: 1px solid #eee; }
+  .btn-group, .btn-group-row { display: flex; gap: 5px; margin-top: 5px; }
+  .g-btn, .s-btn { flex: 1; padding: 8px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 6px; font-size: 10px; font-weight: bold; }
   .active { background: #333 !important; color: white !important; }
   .c-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 10px; }
-  .c-pill { height: 35px; border-radius: 6px; border: 1px solid #ddd; }
-  .u-area { width: 100%; height: 45px; margin-top: 5px; padding: 5px; font-size: 11px; border-radius: 4px; border: 1px solid #ddd; }
-  .u-sel, .u-col { width: 100%; margin-top: 5px; padding: 5px; }
-  .add-btn { width: 100%; padding: 10px; background: #666; color: white; border: none; border-radius: 6px; margin-top: 10px; }
-  .buy-btn { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 6px; margin-top: 8px; font-weight: 900; } 
-  
-  /* 1. Глобальные исправления слоев */
-  .masthead { z-index: 10 !important; } /* Шапка сайта */
-  .initial-content { z-index: 5 !important; }
-  
-  /* 2. Настройка бокового меню (sidebar) */
-  .sidebar {
-    z-index: 20 !important; /* Выше майки */
-    background: white !important;
-  }
-  
-  /* 3. Ограничиваем майку, чтобы она не раздувалась */
-  .panel-center {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    background: white;
-  }
+  .c-pill { height: 35px; border-radius: 6px; border: 1px solid #ddd; cursor: pointer; }
+  .u-area { width: 100%; height: 50px; margin-top: 5px; border-radius: 6px; border: 1px solid #ddd; padding: 8px; }
+  .r-box { display: flex; justify-content: space-between; align-items: center; margin-top: 5px; font-size: 10px; }
+  .add-btn { width: 100%; padding: 12px; background: #666; color: white; border: none; border-radius: 6px; margin-top: 15px; font-weight: bold; }
+  .buy-btn { width: 100%; padding: 14px; background: #28a745; color: white; border: none; border-radius: 6px; margin-top: 8px; font-weight: 900; }
 
-  /* 4. Магия для мобильных устройств */
+  /* 4. МОБИЛЬНАЯ АДАПТАЦИЯ (Фикс майки и скролл управления) */
   @media (max-width: 768px) {
-    /* Чтобы категории не прятались, делаем меню статичным и видимым */
-    .nav__list {
-      display: block !important; 
-      position: relative;
-      z-index: 30 !important;
+    .merch-studio { padding-top: 330px !important; } /* Блоки управления теперь СТРОГО под майкой */
+    
+    .panel-center { 
+      position: fixed; 
+      top: 60px; /* Под хедером */
+      left: 0; 
+      width: 100%; 
+      height: 250px; 
+      z-index: 100; /* Над облаками, но под меню */
+      background: transparent !important;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
     }
-
-    /* Фиксируем майку, но даем ей строгий размер */
-    .panel-center {
-      position: fixed;
-      top: 50px; /* Сразу под кнопкой меню */
-      left: 0;
-      height: 220px; /* Ограничиваем высоту, чтобы не была огромной */
-      z-index: 2;
-      border-bottom: 2px solid #eee;
-    }
-
-    .v-container {
-      width: 180px; /* Уменьшаем визуально саму майку */
-      height: 210px;
+    
+    .v-container { 
+      width: 210px; 
+      height: 250px; 
       margin: 0 auto;
+      pointer-events: auto; /* Рисуем только на майке */
     }
 
-    /* Настройки управления начинаются ниже майки */
-    .merch-studio {
-      padding-top: 270px !important; 
-    }
+    #main-canvas { width: 210px; height: 250px; }
 
-    /* ГЛАВНОЕ: Если меню открыто (тема Jekyll добавляет класс), прячем майку */
-    body.nav-open .panel-center, 
-    .nav__list[style*="display: block"] ~ .merch-studio .panel-center {
-      display: none !important;
+    .panel-side { 
+      width: 95% !important; 
+      margin: 10px auto !important; 
+      position: relative; 
+      z-index: 10; 
     }
   }
 </style>
 
 <script>
+// ЛОГИКА СТУДИИ (Без изменений)
 const COLORS = [
     { id: 'white', hex: '#ffffff' }, { id: 'turquoise', hex: '#40E0D0' }, { id: 'blue', hex: '#1b20bb' },
     { id: 'green', hex: '#008000' }, { id: 'yellow', hex: '#ffff00' }, { id: 'pink', hex: '#ffc0cb' },
@@ -297,10 +249,7 @@ function setupDrag() {
         const r = canvas.getBoundingClientRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        return { 
-            x: (clientX - r.left) * (canvas.width / r.width), 
-            y: (clientY - r.top) * (canvas.height / r.height) 
-        };
+        return { x: (clientX - r.left) * (canvas.width / r.width), y: (clientY - r.top) * (canvas.height / r.height) };
     };
     const start = (e) => {
         const p = getP(e);
@@ -403,8 +352,14 @@ function generatePreview() {
 function updateUI() {
     document.getElementById('cart-counter').innerText = `В наборе: ${cart.length} поз.`;
     document.getElementById('final-send').innerText = `ОТПРАВИТЬ ЗАКАЗ (${cart.length}) 🚀`;
-    ['btn-male','btn-female','btn-kids'].forEach(id => document.getElementById(id).classList.toggle('active', id.includes(currentGender==='m'?'male':currentGender==='f'?'female':'kids')));
-    ['side-f','side-b'].forEach(id => document.getElementById(id).classList.toggle('active', id.includes(currentSide)));
+    ['btn-male','btn-female','btn-kids'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.classList.toggle('active', id.includes(currentGender==='m'?'male':currentGender==='f'?'female':'kids'));
+    });
+    ['side-f','side-b'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.classList.toggle('active', id.includes(currentSide));
+    });
 }
 
 function setGender(g) { currentGender = g[0]; updateVisual(); }
