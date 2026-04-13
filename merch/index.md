@@ -7,6 +7,16 @@ sidebar:
 ---
 
 <div class="merch-studio">
+    <div class="mobile-nav-top">
+        <span class="nav-label">МЕНЮ</span>
+        <div class="nav-links">
+            <a href="/">Главная</a>
+            <a href="/merch/">Мерч</a>
+            <a href="/blog/">Блог</a>
+            <a href="/contacts/">Контакты</a>
+        </div>
+    </div>
+
     <div class="panel-center">
         <div class="v-container">
             <img id="product-base-img" src="">
@@ -67,47 +77,36 @@ sidebar:
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Pattaya&family=Rubik+Mono+One&family=Ruslan+Display&display=swap" rel="stylesheet">
 
 <style> 
-  /* Базовая верстка и скрытие мусора */
+  /* СТАНДАРТНАЯ ОЧИСТКА */
   body.layout--single {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), 
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
                       url('{{ "/assets/images/bg/bg_cloud.jpg" | relative_url }}') !important;
     background-attachment: fixed !important;
     background-size: cover !important;
   }
-  .sidebar__share, .author__urls-wrapper, .follow-button, .page__footer, .page__meta { display: none !important; }
+  .sidebar__share, .author__urls-wrapper, .follow-button, .page__footer, .page__meta, .nav__toggle { display: none !important; }
   #main, .page, .archive, .inner { background: transparent !important; padding-top: 0 !important; }
 
-  /* Кнопка Меню */
-  .nav__toggle {
-    position: fixed; top: 5px; right: 5px; z-index: 2000 !important;
-    margin: 0; padding: 3px 8px; font-size: 0.6rem !important;
-    background: rgba(0,0,0,0.6) !important;
+  /* НОВОЕ МЕНЮ СВЕРХУ (ДЛЯ ВСЕХ) */
+  .mobile-nav-top {
+    position: fixed; top: 0; left: 0; width: 100%; height: 50px;
+    background: #111; color: white; z-index: 3000;
+    display: flex; align-items: center; padding: 0 15px; justify-content: space-between;
   }
+  .nav-label { font-weight: 900; font-size: 14px; letter-spacing: 1px; color: #ffcc00; }
+  .nav-links { display: flex; gap: 10px; }
+  .nav-links a { color: white; text-decoration: none; font-size: 11px; text-transform: uppercase; font-weight: bold; }
 
-  /* Студия */
-  .merch-studio { 
-    display: flex; flex-wrap: wrap; justify-content: center; 
-    gap: 15px; padding: 10px; font-family: 'Segoe UI', sans-serif; 
-  }
+  .merch-studio { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 60px 10px 10px; }
 
-  .panel-side { 
-    width: 260px; background: white; padding: 12px; border-radius: 10px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 0.85rem;
-  }
-
-  .panel-center { 
-    width: 400px; display: flex; flex-direction: column; align-items: center; 
-  }
-
-  .v-container { 
-    position: relative; width: 400px; height: 500px; 
-    background: transparent; overflow: hidden; 
-  }
-
+  /* ЦЕНТРАЛЬНАЯ ПАНЕЛЬ */
+  .panel-center { width: 400px; display: flex; flex-direction: column; align-items: center; }
+  .v-container { position: relative; width: 400px; height: 500px; background: transparent; overflow: hidden; }
   #product-base-img { width: 100%; height: 100%; object-fit: contain; position: absolute; z-index: 1; pointer-events: none; }
   #main-canvas { position: absolute; z-index: 2; cursor: move; }
 
-  /* Элементы управления */
+  /* БОКОВЫЕ ПАНЕЛИ */
+  .panel-side { width: 260px; background: white; padding: 12px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 0.85rem; }
   .t-lab { font-size: 8px; font-weight: 900; color: #aaa; margin-top: 8px; display: block; text-transform: uppercase; border-bottom: 1px solid #eee; }
   .btn-group, .btn-group-row { display: flex; gap: 4px; margin-top: 5px; }
   .btn-group { flex-direction: column; }
@@ -129,16 +128,16 @@ sidebar:
 
   /* МОБИЛЬНАЯ ВЕРСИЯ */
   @media (max-width: 768px) {
-    .merch-studio { padding-top: 300px; flex-direction: column; align-items: center; }
+    .merch-studio { padding-top: 310px; flex-direction: column; align-items: center; gap: 0; }
     .panel-center { 
-        position: fixed; top: 35px; left: 0; width: 100%; height: 260px; 
-        z-index: 100; background: white; padding: 5px 0;
+        position: fixed; top: 50px; left: 0; width: 100%; height: 260px; 
+        z-index: 100; background: white; padding: 0;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        pointer-events: none; /* Пропуск кликов к меню */
+        pointer-events: none;
     }
-    .v-container { width: 220px; height: 280px; pointer-events: auto; }
-    #main-canvas { width: 220px; height: 280px; }
-    .panel-side { width: 100%; max-width: 320px; border-radius: 0; padding: 10px 15px; }
+    .v-container { width: 220px; height: 260px; pointer-events: auto; }
+    #main-canvas { width: 220px; height: 260px; }
+    .panel-side { width: 100%; max-width: 100%; border-radius: 0; padding: 10px 15px; border-bottom: 1px solid #eee; }
     .btn-group-row { flex-direction: row; }
     .s-btn { flex: 1; }
   }
