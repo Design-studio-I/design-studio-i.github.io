@@ -156,7 +156,7 @@ sidebar:
 
     .panel-center { 
       position: fixed; 
-      top: 0; /* Футболка в самом верху экрана */
+      top: 10; /* Футболка в самом верху экрана */
       left: 0;
       width: 100%;
       height: 290px;
