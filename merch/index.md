@@ -116,37 +116,54 @@ sidebar:
   .add-btn { width: 100%; padding: 12px; background: #666; color: white; border: none; border-radius: 6px; margin-top: 15px; font-weight: bold; }
   .buy-btn { width: 100%; padding: 14px; background: #28a745; color: white; border: none; border-radius: 6px; margin-top: 8px; font-weight: 900; }
 
-  /* 4. МОБИЛЬНАЯ АДАПТАЦИЯ (Фикс майки и скролл управления) */
+ /* 4. МОБИЛЬНАЯ АДАПТАЦИЯ */
   @media (max-width: 768px) {
-    .merch-studio { padding-top: 330px !important; } /* Блоки управления теперь СТРОГО под майкой */
+    .merch-studio { 
+      padding-top: 330px !important; /* Оставляем место под фиксированную майку */
+    }
     
     .panel-center { 
       position: fixed; 
-      top: 60px; /* Под хедером */
+      top: 60px; 
       left: 0; 
       width: 100%; 
       height: 250px; 
-      z-index: 100; /* Над облаками, но под меню */
-      background: transparent !important;
+      z-index: 100; /* Майка и текст над контентом */
+      background: transparent !important; /* Твой прозрачный фон */
       display: flex;
       justify-content: center;
-      pointer-events: none;
+      pointer-events: none; /* Пропускаем клики сквозь пустые зоны */
     }
     
     .v-container { 
       width: 210px; 
       height: 250px; 
       margin: 0 auto;
-      pointer-events: auto; /* Рисуем только на майке */
+      position: relative; /* Критично для позиционирования текста */
+      background: transparent !important;
+      pointer-events: auto; /* Позволяем кликать по самой майке */
     }
 
-    #main-canvas { width: 210px; height: 250px; }
+    #product-base-img {
+      width: 100%;
+      height: 100%;
+      z-index: 1; /* Картинка майки внизу */
+    }
+
+    #main-canvas { 
+      width: 210px; 
+      height: 250px; 
+      z-index: 2; /* ТЕКСТ СТРОГО НАД МАЙКОЙ */
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
 
     .panel-side { 
       width: 95% !important; 
       margin: 10px auto !important; 
       position: relative; 
-      z-index: 10; 
+      z-index: 10; /* Кнопки управления под майкой */
     }
   }
 </style>
