@@ -67,7 +67,7 @@ sidebar:
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Pattaya&family=Rubik+Mono+One&family=Ruslan+Display&display=swap" rel="stylesheet">
 
 <style> 
-  /* Очистка темы */
+  /* Настройки фона и скрытие лишнего */
   body.layout--single {
     background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
                       url('{{ "/assets/images/bg/bg_cloud.jpg" | relative_url }}') !important;
@@ -75,32 +75,20 @@ sidebar:
     background-size: cover !important;
   }
   .sidebar__share, .author__urls-wrapper, .follow-button, .page__footer, .page__meta { display: none !important; }
-  #main, .page, .archive, .inner { background: transparent !important; padding-top: 0 !important; }
+  
+  /* Делаем хедер сайта видимым и фиксированным */
+  .masthead { position: fixed !important; top: 0; width: 100%; z-index: 4000 !important; background: white !important; }
+  .nav__toggle { z-index: 5000 !important; }
 
-  /* ОЖИВЛЯЕМ РОДНУЮ КНОПКУ МЕНЮ (Toggle Menu) */
-  .nav__toggle {
-    display: block !important;
-    position: fixed !important;
-    top: 10px !important;
-    right: 10px !important;
-    z-index: 5000 !important; /* Выше всех! */
-    background: #ffcc00 !important; /* Яркая, чтобы не потерять */
-    color: black !important;
-    border-radius: 5px;
-    padding: 8px 15px !important;
-    font-weight: bold !important;
-  }
-
-  /* СТУДИЯ */
   .merch-studio { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 20px 10px; }
 
-  /* ФУТБОЛКА */
+  /* Десктопная футболка */
   .panel-center { width: 400px; display: flex; flex-direction: column; align-items: center; }
   .v-container { position: relative; width: 400px; height: 500px; background: transparent; overflow: hidden; }
   #product-base-img { width: 100%; height: 100%; object-fit: contain; position: absolute; z-index: 1; pointer-events: none; }
   #main-canvas { position: absolute; z-index: 2; cursor: move; }
 
-  /* ПАНЕЛИ УПРАВЛЕНИЯ */
+  /* Стили панелей */
   .panel-side { width: 260px; background: white; padding: 12px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 0.85rem; }
   .t-lab { font-size: 8px; font-weight: 900; color: #aaa; margin-top: 8px; display: block; text-transform: uppercase; border-bottom: 1px solid #eee; }
   .btn-group, .btn-group-row { display: flex; gap: 4px; margin-top: 5px; }
@@ -109,48 +97,47 @@ sidebar:
   .active { background: #333 !important; color: white !important; }
   
   .c-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 10px; }
-  .c-pill { height: 35px; border-radius: 6px; cursor: pointer; border: 1px solid #ddd; }
+  .c-pill { height: 35px; border-radius: 6px; border: 1px solid #ddd; }
 
   .u-area { width: 100%; height: 45px; margin-top: 5px; padding: 5px; font-size: 11px; border-radius: 4px; border: 1px solid #ddd; }
   .u-sel, .u-col { width: 100%; margin-top: 5px; padding: 5px; font-size: 11px; border-radius: 4px; }
-  .r-box { display: flex; justify-content: space-between; font-size: 9px; margin-top: 4px; align-items: center; }
   input[type="range"] { width: 65%; height: 12px; }
 
   .add-btn { width: 100%; padding: 10px; background: #666; color: white; border: none; border-radius: 6px; margin-top: 10px; font-size: 11px; }
   .buy-btn { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 6px; margin-top: 8px; font-weight: 900; font-size: 12px; }
-  .cart-status { margin-top: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px; text-align: center; font-weight: bold; font-size: 11px; }
+  .cart-status { margin-top: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px; text-align: center; font-size: 11px; }
   .clear-btn { width: 100%; border: none; background: none; cursor: pointer; text-decoration: underline; color: #bbb; font-size: 10px; margin-top: 5px; }
 
   /* МОБИЛЬНАЯ ВЕРСИЯ */
   @media (max-width: 768px) {
-    .merch-studio { padding-top: 260px; flex-direction: column; align-items: center; gap: 0; }
+    /* Контент начинается ниже хедера и фиксированной футболки */
+    .merch-studio { padding-top: 320px; flex-direction: column; align-items: center; }
     
-    /* Замороженная футболка */
+    /* Замороженная футболка - опускаем ниже хедера (50px) */
     .panel-center { 
         position: fixed; 
-        top: 0; 
+        top: 50px; 
         left: 0; 
         width: 100%; 
         height: 250px; 
-        z-index: 100; /* Ниже кнопки меню, но выше контента */
+        z-index: 100;
         background: white; 
-        padding: 5px 0;
+        padding: 10px 0;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         pointer-events: none;
     }
-    .v-container { width: 200px; height: 240px; pointer-events: auto; margin: 0 auto; }
-    #main-canvas { width: 200px; height: 240px; }
+    .v-container { width: 200px; height: 230px; pointer-events: auto; margin: 0 auto; }
+    #main-canvas { width: 200px; height: 230px; }
 
     /* Панели управления */
-    .panel-side { width: 100%; max-width: 100%; border-radius: 0; padding: 10px 15px; border-bottom: 1px solid #eee; box-shadow: none; }
+    .panel-side { width: 100%; max-width: 100%; border-radius: 0; box-shadow: none; border-bottom: 1px solid #eee; }
     
-    /* Исправляем перекрытие открытого меню */
-    .nav-open .panel-center { z-index: 10 !important; } /* Если меню открыто, футболка уходит вглубь */
+    /* Если боковое меню открыто — прячем футболку, чтобы она не мешала */
+    body.nav-open .panel-center { display: none !important; }
   }
 </style>
 
 <script>
-// (Весь твой JS остается без изменений, я только инициализирую его)
 const COLORS = [
     { id: 'white', hex: '#ffffff' }, { id: 'turquoise', hex: '#40E0D0' }, { id: 'blue', hex: '#1b20bb' },
     { id: 'green', hex: '#008000' }, { id: 'yellow', hex: '#ffff00' }, { id: 'pink', hex: '#ffc0cb' },
