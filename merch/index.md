@@ -81,14 +81,14 @@ sidebar:
   }
 
   /* 2. ПРОЗРАЧНОЕ МЕНЮ */
-  .masthead { background: rgba(255,255,255,0.8) !important; border-bottom: none !important; }
+  .masthead { background: rgba(255,255,255,0) !important; border-bottom: none !important; }
   .nav__list, .sidebar, .sidebar.sticky {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
   }
   .nav__items a {
-    background: rgba(255, 255, 255, 0.6) !important;
+    background: rgba(255, 255, 255, 0) !important;
     margin-bottom: 2px;
     border-radius: 4px;
     padding: 8px 12px !important;
