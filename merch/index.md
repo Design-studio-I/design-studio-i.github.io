@@ -66,77 +66,119 @@ sidebar:
 
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Pattaya&family=Rubik+Mono+One&family=Ruslan+Display&display=swap" rel="stylesheet">
 
-<style>
-  /* Скрываем кнопку Follow и настраиваем кнопку меню */
-  .sidebar__share, .author__urls-wrapper, .follow-button { display: none !important; }
-  
-  /* Прижимаем бургер-меню (Toggle Menu) к самому верху и делаем компактнее */
+<style> 
+  /* 1. ГЛОБАЛЬНЫЕ ПРАВКИ И ЧИСТКА МЕСТА */
+  body.layout--single {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), 
+                      url('{{ "/assets/images/bg/bg_cloud.jpg" | relative_url }}') !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+  }
+
+  /* Скрываем ненужные элементы темы для экономии места */
+  .sidebar__share, .author__urls-wrapper, .follow-button, .page__footer, .page__meta { display: none !important; }
+  #main, .page, .archive, .inner { background: transparent !important; padding-top: 0 !important; }
+
+  /* Настройка кнопки Toggle Menu (Бургер) */
   .nav__toggle {
     position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
+    top: 5px;
+    right: 5px;
+    z-index: 1100;
     margin: 0;
-    padding: 5px 10px;
-    font-size: 0.7rem; /* В 2 раза меньше */
+    padding: 3px 8px;
+    font-size: 0.6rem !important;
+    background: rgba(0,0,0,0.6) !important;
   }
 
-  /* Уменьшаем панели управления */
-  .panel-side {
-    padding: 10px; /* Уплотняем внутренние отступы */
-    font-size: 0.8rem;
+  /* 2. КОНТЕЙНЕРЫ СТУДИИ */
+  .merch-studio { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 15px; 
+    padding: 10px; 
+    font-family: 'Segoe UI', sans-serif; 
   }
 
-  .t-lab {
-    font-size: 9px; /* Совсем крошечный заголовок */
-    margin-top: 8px;
-    padding-bottom: 2px;
+  /* Панели управления (компактный режим) */
+  .panel-side { 
+    width: 260px; 
+    background: white; 
+    padding: 12px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    font-size: 0.85rem;
   }
 
-  /* Уменьшаем кнопки и селекторы */
-  .g-btn, .s-btn, .u-area, .u-sel, .u-col {
-    padding: 5px !important;
-    font-size: 11px !important;
-    min-height: auto !important;
+  .panel-center { 
+    width: 400px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
   }
 
-  .r-box {
-    margin-top: 5px;
-    font-size: 10px;
+  .v-container { 
+    position: relative; 
+    width: 400px; 
+    height: 500px; 
+    background: transparent;
+    overflow: hidden; 
   }
 
-  /* Уплотняем input range (ползунки) */
-  input[type="range"] {
-    height: 15px;
-    margin: 0;
-  }
+  #product-base-img { width: 100%; height: 100%; object-fit: contain; position: absolute; z-index: 1; pointer-events: none; }
+  #main-canvas { position: absolute; z-index: 2; cursor: move; }
 
-  /* Кнопки действий делаем компактнее */
-  .add-btn { padding: 8px; font-size: 12px; margin-top: 10px; }
-  .buy-btn { padding: 10px; font-size: 12px; }
+  /* 3. МИКРО-ЭЛЕМЕНТЫ УПРАВЛЕНИЯ */
+  .t-lab { font-size: 8px; font-weight: 900; color: #aaa; margin-top: 8px; display: block; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #eee; }
+  .btn-group, .btn-group-row { display: flex; gap: 4px; margin-top: 5px; }
+  .btn-group { flex-direction: column; }
+  
+  .g-btn, .s-btn { padding: 6px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px; font-size: 10px; font-weight: bold; }
+  .active { background: #333 !important; color: white !important; }
+  
+  .u-area { width: 100%; height: 45px; margin-top: 5px; padding: 5px; font-size: 11px; border-radius: 4px; border: 1px solid #ddd; }
+  .u-sel, .u-col { width: 100%; margin-top: 5px; padding: 5px; font-size: 11px; border-radius: 4px; }
+  
+  .r-box { display: flex; justify-content: space-between; font-size: 9px; margin-top: 4px; align-items: center; }
+  input[type="range"] { width: 65%; height: 12px; margin: 0; }
 
+  .add-btn { width: 100%; padding: 10px; background: #666; color: white; border: none; border-radius: 6px; margin-top: 10px; font-size: 11px; cursor: pointer; }
+  .buy-btn { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 6px; margin-top: 8px; font-weight: 900; font-size: 12px; cursor: pointer; }
+
+  /* 4. МОБИЛЬНАЯ МАГИЯ (ЗОНА ДЛЯ СМАРТФОНОВ) */
   @media (max-width: 768px) {
     .merch-studio { 
-      padding-top: 310px; /* Уменьшили отступ, так как холст стал меньше */
+      padding-top: 290px; /* Спускаем настройки под фиксированную футболку */
+      flex-direction: column; 
+      align-items: center; 
     }
 
-    .panel-center {
-      top: 0; /* Прижали футболку к самому верху под меню */
-      height: 310px;
+    .panel-center { 
+      position: fixed; 
+      top: 0; /* Футболка в самом верху экрана */
+      left: 0;
+      width: 100%;
+      height: 290px;
+      z-index: 100;
+      background: white; 
       padding: 5px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
-    .v-container, #main-canvas {
-      width: 240px; /* Еще компактнее */
-      height: 300px;
+    .v-container, #main-canvas { width: 220px; height: 280px; }
+
+    .panel-side { 
+      width: 100%; 
+      max-width: 100%; 
+      border-radius: 0; 
+      padding: 10px 20px;
     }
-    
-    /* Делаем сетку цветов в один ряд, чтобы не занимала высоту */
-    .c-grid {
-      grid-template-columns: repeat(10, 1fr);
-      gap: 2px;
-    }
-    .c-pill { height: 18px; }
+
+    .c-grid { grid-template-columns: repeat(10, 1fr); gap: 2px; }
+    .c-pill { height: 20px; }
+    .btn-group-row { flex-direction: row; }
+    .s-btn { flex: 1; }
   }
 </style>
 
