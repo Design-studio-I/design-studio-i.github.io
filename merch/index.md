@@ -67,116 +67,78 @@ sidebar:
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Pattaya&family=Rubik+Mono+One&family=Ruslan+Display&display=swap" rel="stylesheet">
 
 <style> 
-  /* 1. ГЛОБАЛЬНЫЕ ПРАВКИ И ЧИСТКА МЕСТА */
+  /* Базовая верстка и скрытие мусора */
   body.layout--single {
     background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), 
                       url('{{ "/assets/images/bg/bg_cloud.jpg" | relative_url }}') !important;
     background-attachment: fixed !important;
     background-size: cover !important;
   }
-
-  /* Скрываем ненужные элементы темы для экономии места */
   .sidebar__share, .author__urls-wrapper, .follow-button, .page__footer, .page__meta { display: none !important; }
   #main, .page, .archive, .inner { background: transparent !important; padding-top: 0 !important; }
 
-  /* Настройка кнопки Toggle Menu (Бургер) */
+  /* Кнопка Меню */
   .nav__toggle {
-    position: fixed;
-    top: 5px;
-    right: 5px;
-    z-index: 1100;
-    margin: 0;
-    padding: 3px 8px;
-    font-size: 0.6rem !important;
+    position: fixed; top: 5px; right: 5px; z-index: 2000 !important;
+    margin: 0; padding: 3px 8px; font-size: 0.6rem !important;
     background: rgba(0,0,0,0.6) !important;
   }
 
-  /* 2. КОНТЕЙНЕРЫ СТУДИИ */
+  /* Студия */
   .merch-studio { 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-    gap: 15px; 
-    padding: 10px; 
-    font-family: 'Segoe UI', sans-serif; 
+    display: flex; flex-wrap: wrap; justify-content: center; 
+    gap: 15px; padding: 10px; font-family: 'Segoe UI', sans-serif; 
   }
 
-  /* Панели управления (компактный режим) */
   .panel-side { 
-    width: 260px; 
-    background: white; 
-    padding: 12px; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-    font-size: 0.85rem;
+    width: 260px; background: white; padding: 12px; border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 0.85rem;
   }
 
   .panel-center { 
-    width: 400px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
+    width: 400px; display: flex; flex-direction: column; align-items: center; 
   }
 
   .v-container { 
-    position: relative; 
-    width: 400px; 
-    height: 500px; 
-    background: transparent;
-    overflow: hidden; 
+    position: relative; width: 400px; height: 500px; 
+    background: transparent; overflow: hidden; 
   }
 
   #product-base-img { width: 100%; height: 100%; object-fit: contain; position: absolute; z-index: 1; pointer-events: none; }
   #main-canvas { position: absolute; z-index: 2; cursor: move; }
 
-  /* 3. МИКРО-ЭЛЕМЕНТЫ УПРАВЛЕНИЯ */
-  .t-lab { font-size: 8px; font-weight: 900; color: #aaa; margin-top: 8px; display: block; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #eee; }
+  /* Элементы управления */
+  .t-lab { font-size: 8px; font-weight: 900; color: #aaa; margin-top: 8px; display: block; text-transform: uppercase; border-bottom: 1px solid #eee; }
   .btn-group, .btn-group-row { display: flex; gap: 4px; margin-top: 5px; }
   .btn-group { flex-direction: column; }
-  
   .g-btn, .s-btn { padding: 6px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px; font-size: 10px; font-weight: bold; }
   .active { background: #333 !important; color: white !important; }
   
+  .c-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 10px; }
+  .c-pill { height: 35px; border-radius: 6px; cursor: pointer; border: 1px solid #ddd; }
+
   .u-area { width: 100%; height: 45px; margin-top: 5px; padding: 5px; font-size: 11px; border-radius: 4px; border: 1px solid #ddd; }
   .u-sel, .u-col { width: 100%; margin-top: 5px; padding: 5px; font-size: 11px; border-radius: 4px; }
-  
   .r-box { display: flex; justify-content: space-between; font-size: 9px; margin-top: 4px; align-items: center; }
-  input[type="range"] { width: 65%; height: 12px; margin: 0; }
+  input[type="range"] { width: 65%; height: 12px; }
 
-  .add-btn { width: 100%; padding: 10px; background: #666; color: white; border: none; border-radius: 6px; margin-top: 10px; font-size: 11px; cursor: pointer; }
-  .buy-btn { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 6px; margin-top: 8px; font-weight: 900; font-size: 12px; cursor: pointer; }
+  .add-btn { width: 100%; padding: 10px; background: #666; color: white; border: none; border-radius: 6px; margin-top: 10px; font-size: 11px; }
+  .buy-btn { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 6px; margin-top: 8px; font-weight: 900; font-size: 12px; }
+  .cart-status { margin-top: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px; text-align: center; font-weight: bold; font-size: 11px; }
+  .clear-btn { width: 100%; border: none; background: none; cursor: pointer; text-decoration: underline; color: #bbb; font-size: 10px; margin-top: 5px; }
 
-  /* 4. МОБИЛЬНАЯ МАГИЯ (ЗОНА ДЛЯ СМАРТФОНОВ) */
+  /* МОБИЛЬНАЯ ВЕРСИЯ */
   @media (max-width: 768px) {
-    .merch-studio { 
-      padding-top: 290px; /* Спускаем настройки под фиксированную футболку */
-      flex-direction: column; 
-      align-items: center; 
-    }
-
+    .merch-studio { padding-top: 300px; flex-direction: column; align-items: center; }
     .panel-center { 
-      position: fixed; 
-      top: 1; /* Футболка в самом верху экрана */
-      left: 0;
-      width: 100%;
-      height: 290px;
-      z-index: 100;
-      background: white; 
-      padding: 5px 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: fixed; top: 35px; left: 0; width: 100%; height: 260px; 
+        z-index: 100; background: white; padding: 5px 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        pointer-events: none; /* Пропуск кликов к меню */
     }
-
-    .v-container, #main-canvas { width: 220px; height: 280px; }
-
-    .panel-side { 
-      width: 100%; 
-      max-width: 100%; 
-      border-radius: 0; 
-      padding: 10px 20px;
-    }
-
-    .c-grid { grid-template-columns: repeat(10, 1fr); gap: 2px; }
-    .c-pill { height: 20px; }
+    .v-container { width: 220px; height: 280px; pointer-events: auto; }
+    #main-canvas { width: 220px; height: 280px; }
+    .panel-side { width: 100%; max-width: 320px; border-radius: 0; padding: 10px 15px; }
     .btn-group-row { flex-direction: row; }
     .s-btn { flex: 1; }
   }
@@ -198,6 +160,7 @@ function init() {
     canvas = document.getElementById('main-canvas');
     ctx = canvas.getContext('2d');
     const grid = document.getElementById('color-grid');
+    grid.innerHTML = '';
     COLORS.forEach(c => {
         const d = document.createElement('div');
         d.className = 'c-pill'; d.style.backgroundColor = c.hex;
@@ -236,44 +199,6 @@ function handleLogo(e) {
     r.readAsDataURL(file);
 }
 
-function saveToStorage() {
-    const data = {
-        gender: currentGender, side: currentSide, color: currentColor,
-        textPos: state.text, logoPos: state.logo,
-        vals: {
-            t: document.getElementById('u-text').value, f: document.getElementById('f-family').value,
-            s: document.getElementById('t-size').value, a: document.getElementById('t-arc').value,
-            r: document.getElementById('t-rot').value, ls: document.getElementById('l-size').value,
-            tc: document.getElementById('t-color').value
-        },
-        thumb: displayLogo ? displayLogo.src : null,
-        cart: cart
-    };
-    try { localStorage.setItem('merch_v2', JSON.stringify(data)); } catch(e) {}
-}
-
-function loadFromStorage() {
-    const raw = localStorage.getItem('merch_v2');
-    if(!raw) return;
-    const d = JSON.parse(raw);
-    currentGender = d.gender; currentSide = d.side; currentColor = d.color;
-    state.text = d.textPos; state.logo = d.logoPos;
-    document.getElementById('u-text').value = d.vals.t;
-    document.getElementById('f-family').value = d.vals.f;
-    document.getElementById('t-size').value = d.vals.s;
-    document.getElementById('t-arc').value = d.vals.a;
-    document.getElementById('t-rot').value = d.vals.r;
-    document.getElementById('l-size').value = d.vals.ls;
-    document.getElementById('t-color').value = d.vals.tc;
-    if(d.thumb) {
-        displayLogo = new Image();
-        displayLogo.onload = updateAll;
-        displayLogo.src = d.thumb;
-    }
-    cart = d.cart || [];
-    updateUI();
-}
-
 function updateAll() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (displayLogo) {
@@ -306,6 +231,76 @@ function updateAll() {
     saveToStorage();
 }
 
+function setupDrag() {
+    const getP = (e) => {
+        const r = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return { 
+            x: (clientX - r.left) * (canvas.width / r.width), 
+            y: (clientY - r.top) * (canvas.height / r.height) 
+        };
+    };
+
+    const start = (e) => {
+        const p = getP(e);
+        const dT = Math.hypot(p.x - state.text.x, p.y - state.text.y);
+        const dL = Math.hypot(p.x - state.logo.x, p.y - state.logo.y);
+        if (dT < 50) { state.text.drag = true; if(e.cancelable) e.preventDefault(); }
+        else if (dL < 80) { state.logo.drag = true; if(e.cancelable) e.preventDefault(); }
+    };
+
+    const move = (e) => {
+        if (!state.text.drag && !state.logo.drag) return;
+        if(e.cancelable) e.preventDefault();
+        const p = getP(e);
+        if (state.text.drag) { state.text.x = p.x; state.text.y = p.y; }
+        if (state.logo.drag) { state.logo.x = p.x; state.logo.y = p.y; }
+        updateAll();
+    };
+
+    const stop = () => { state.text.drag = state.logo.drag = false; saveToStorage(); };
+
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('touchstart', start, {passive: false});
+    window.addEventListener('mousemove', move);
+    window.addEventListener('touchmove', move, {passive: false});
+    window.addEventListener('mouseup', stop);
+    window.addEventListener('touchend', stop);
+}
+
+function saveToStorage() {
+    const data = {
+        gender: currentGender, side: currentSide, color: currentColor,
+        textPos: state.text, logoPos: state.logo,
+        vals: {
+            t: document.getElementById('u-text').value, f: document.getElementById('f-family').value,
+            s: document.getElementById('t-size').value, a: document.getElementById('t-arc').value,
+            r: document.getElementById('t-rot').value, ls: document.getElementById('l-size').value,
+            tc: document.getElementById('t-color').value
+        },
+        thumb: displayLogo ? displayLogo.src : null, cart: cart
+    };
+    try { localStorage.setItem('merch_v2', JSON.stringify(data)); } catch(e) {}
+}
+
+function loadFromStorage() {
+    const raw = localStorage.getItem('merch_v2');
+    if(!raw) return;
+    const d = JSON.parse(raw);
+    currentGender = d.gender; currentSide = d.side; currentColor = d.color;
+    state.text = d.textPos; state.logo = d.logoPos;
+    document.getElementById('u-text').value = d.vals.t;
+    document.getElementById('f-family').value = d.vals.f;
+    document.getElementById('t-size').value = d.vals.s;
+    document.getElementById('t-arc').value = d.vals.a;
+    document.getElementById('t-rot').value = d.vals.r;
+    document.getElementById('l-size').value = d.vals.ls;
+    document.getElementById('t-color').value = d.vals.tc;
+    if(d.thumb) { displayLogo = new Image(); displayLogo.onload = updateAll; displayLogo.src = d.thumb; }
+    cart = d.cart || []; updateUI();
+}
+
 async function sendOrder() {
     if (cart.length === 0) return alert("Корзина пуста!");
     const btn = document.getElementById('final-send');
@@ -326,17 +321,15 @@ async function sendOrder() {
         }
         window.open(`https://wa.me/77783282689?text=🚀 *НОВЫЙ ЗАКАЗ*${report}`, '_blank');
         localStorage.removeItem('merch_v2'); location.reload();
-    } catch(e) { alert("Ошибка API"); }
+    } catch(e) { alert("Ошибка API"); btn.innerText = "ОШИБКА"; }
 }
 
-function genFD(base64) {
-    const fd = new FormData(); fd.append('image', base64.split(',')[1]); return fd;
-}
+function genFD(base64) { const fd = new FormData(); fd.append('image', base64.split(',')[1]); return fd; }
 
 function addToCart() {
     generatePreview().then(prev => {
         cart.push({ img: prev, thumb: displayLogo?displayLogo.src:null, orig: originalFile, desc: `${currentGender}/${currentSide}/${currentColor}: ${document.getElementById('u-text').value}` });
-        updateUI(); saveToStorage(); alert("Добавлено!");
+        updateUI(); saveToStorage(); alert("Добавлено в набор!");
     });
 }
 
@@ -366,19 +359,6 @@ function updateVisual() {
     setTimeout(updateAll, 50); updateUI();
 }
 
-function setupDrag() {
-    const getP = (e) => { const r = canvas.getBoundingClientRect(); return { x: (e.clientX || (e.touches && e.touches[0].clientX)) - r.left, y: (e.clientY || (e.touches && e.touches[0].clientY)) - r.top }; };
-    canvas.onmousedown = canvas.ontouchstart = (e) => {
-        const p = getP(e), dT = Math.hypot(p.x - state.text.x, p.y - state.text.y), dL = Math.hypot(p.x - state.logo.x, p.y - state.logo.y);
-        if (dT < dL && dT < 50) state.text.drag = true; else if (dL < 80) state.logo.drag = true;
-    };
-    window.onmousemove = window.ontouchmove = (e) => {
-        if (!state.text.drag && !state.logo.drag) return;
-        const p = getP(e); if (state.text.drag) { state.text.x = p.x; state.text.y = p.y; } if (state.logo.drag) { state.logo.x = p.x; state.logo.y = p.y; } updateAll();
-    };
-    window.onmouseup = window.ontouchend = () => { state.text.drag = state.logo.drag = false; saveToStorage(); };
-}
-
-function clearAllData() { if(confirm("Сбросить?")) { localStorage.clear(); location.reload(); } }
+function clearAllData() { if(confirm("Сбросить дизайн и корзину?")) { localStorage.clear(); location.reload(); } }
 window.onload = init;
 </script>
