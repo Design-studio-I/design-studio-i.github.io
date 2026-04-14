@@ -169,11 +169,46 @@
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
-}
+} 
 
 .add-to-cart-btn:hover, .btn--success:hover {
   background-color: #faa; /* Розовый при наведении */
 }
 
-/* Убираем мусор от старых выпадашек, если они мешают верстке */
-.masthead__menu-item ul { display: none !important; }
+/* ==========================================================================
+   4. ФИКС МОБИЛЬНОГО МЕНЮ
+   ========================================================================== */
+.masthead__menu-links {
+  display: flex !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap !important;
+}
+
+.masthead__menu-links::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .masthead__menu-item {
+    display: inline-block !important;
+    margin-right: 15px !important;
+  }
+
+  .masthead__menu-item a {
+    padding: 10px 5px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .masthead {
+    position: relative !important;
+    z-index: 110 !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(5px);
+  }
+} /* <--- ВОТ ЭТА СКОБКА БЫЛА ПОТЕРЯНА */
+
+/* Убираем мусор от старых выпадашек */
+.masthead__menu-item ul { 
+  display: none !important; 
+}
