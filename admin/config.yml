@@ -2,7 +2,6 @@ backend:
   name: github
   repo: design-studio-i/design-studio-i.github.io
   branch: main 
-  auth_type: implicit
   app_id: Ov23li1YRU5rPFoYbnkc
 
 media_folder: "assets/images/merch"
