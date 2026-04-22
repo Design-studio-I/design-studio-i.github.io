@@ -2,6 +2,7 @@ backend:
   name: github
   repo: Contiblu/lexi
   branch: master
+  auth_type: implicit
 
 media_folder: "assets/images/merch"
 public_folder: "/assets/images/merch"
