@@ -329,14 +329,26 @@ function updateCartBadge() {
     badge.style.display = total > 0 ? 'inline-block' : 'none';
 }
 
-function processOrder() {
+async function processOrder() {
     let cart = JSON.parse(localStorage.getItem('my_merch_cart')) || [];
+    if (cart.length === 0) return;
+
     const myNumber = "77783282689"; 
+    let grandTotal = 0;
     
+    // Подготавливаем данные для нашего шлюза (Node.js + GitHub + 1C)
+    const orderForGateway = {
+        orderId: Date.now(),
+        items: cart,
+        total: 0,
+        date: new Date().toISOString(),
+        status: "Новый"
+    };
+
+    // Собираем текст для WhatsApp (твоя старая логика)
     let message = `🚀 НОВЫЙ ЗАКАЗ ИЗ КОРЗИНЫ\n`;
     message += `--------------------------\n\n`;
 
-    let grandTotal = 0;
     cart.forEach((item, i) => {
         const price = parseInt(item.price.replace(/\s/g, '')) || 0;
         const qty = parseInt(item.qty) || 1;
@@ -344,6 +356,25 @@ function processOrder() {
         grandTotal += total;
         message += `${i+1}. ${item.name}\n   ID: ${item.id}\n   Кол-во: ${qty} шт.\n   Сумма: ${total.toLocaleString()} ₸\n\n`;
     });
+
+    orderForGateway.total = grandTotal;
+
+    // --- МАГИЯ ШЛЮЗА: ОТПРАВКА НА СЕРВЕР ---
+    try {
+        console.log("📡 Отправка заказа на бизнес-шлюз...");
+        const response = await fetch('http://localhost:8081/api/order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orderForGateway)
+        });
+        
+        if (response.ok) {
+            console.log("✅ Заказ успешно зафиксирован в системе (GitHub/1C)");
+        }
+    } catch (err) {
+        console.warn("⚠️ Шлюз недоступен (возможно, сервер не запущен), но WhatsApp сработает.");
+    }
+    // ---------------------------------------
 
     const deliveryDate = new Date();
     deliveryDate.setDate(deliveryDate.getDate() + 10);
@@ -354,6 +385,7 @@ function processOrder() {
     message += `📅 Готовность к: ${dateStr}\n\n`;
     message += `Жду подтверждения!`;
 
+    // Открываем WhatsApp
     window.open(`https://wa.me/${myNumber}?text=${encodeURIComponent(message)}`, '_blank');
 }
 </script>
