@@ -36,7 +36,7 @@ async function save() {
     const base64 = reader.result;
 
     // 1. Загружаем картинку
-    const upload = await fetch("https://ТВОЙ-СЕРВЕР/api/upload", {
+    const upload = await fetch("https://github.com/Contiblu/lexi/blob/master/api/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -49,7 +49,7 @@ async function save() {
     const img = await upload.json();
 
     // 2. Создаём товар
-    await fetch("https://ТВОЙ-СЕРВЕР/api/product", {
+    await fetch("https://github.com/Contiblu/lexi/blob/master/api/product", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
