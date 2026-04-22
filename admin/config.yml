@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: Contiblu/design-studio-i.github.io
+  repo: Contiblu/.github.io
   branch: main 
   auth_type: implicit
 
