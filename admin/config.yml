@@ -2,7 +2,8 @@ backend:
   name: github
   repo: Contiblu/design-studio-i.github.io
   branch: main 
-  base_url: https://gatekeeper.decapcms.org
+  auth_type: implicit
+  app_id: Ov23li1YRU5rPFoYbnkc
 
 media_folder: "assets/images/merch"
 public_folder: "/assets/images/merch"
