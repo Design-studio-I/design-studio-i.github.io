@@ -2,7 +2,6 @@ backend:
   name: github
   repo: Contiblu/lexi
   branch: master
-  base_url: https://design-studio-i.github.io/
 
 media_folder: "assets/images/merch"
 public_folder: "/assets/images/merch"
