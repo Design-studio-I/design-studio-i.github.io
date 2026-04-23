@@ -1,4 +1,10 @@
 merch:
+  - slug: "item_296198"
+    title: "Подушки на подголовники"
+    price: "30000"
+    image: "/assets/images/auto/car_0025.png"
+    description: "Вышивка на коже"
+
   - slug: car_0001
     title: Эмблема Тойота
     price: "10000"
