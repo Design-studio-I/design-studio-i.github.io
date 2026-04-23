@@ -1,74 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Админка</title>
+    <meta charset="utf-8">
+    <title>Панель Оператора</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; max-width: 500px; }
+        input, select, button { display: block; width: 100%; margin-bottom: 10px; padding: 10px; }
+    </style>
 </head>
 <body>
+    <h2>Разложить товар по полкам</h2>
+    <input type="text" id="title" placeholder="Название товара (например: Футболка Хаски)">
+    <input type="number" id="price" placeholder="Цена (руб)">
+    <select id="category">
+        <option value="clothes">Одежда</option>
+        <option value="accessories">Аксессуары</option>
+        <option value="interior">Интерьер</option>
+    </select>
+    <input type="file" id="image" accept="image/*">
+    <button onclick="saveProduct()">Опубликовать на сайт</button>
 
-<h2>Добавить товар</h2>
+    <script>
+        async function saveProduct() {
+            const fileInput = document.getElementById('image');
+            if (!fileInput.files[0]) return alert("Выбери фото!");
 
-<select id="category">
-  <option value="accessories">Аксессуары</option>
-  <option value="auto">Авто</option>
-  <option value="bed_linen">Постельное</option>
-  <option value="business">Для бизнеса</option>
-  <option value="clothes">Одежда</option>
-  <option value="design">Дизайн</option>
-  <option value="home">Для дома</option>
-  <option value="interior">Интерьер</option>
-  <option value="kids">Детям</option>
-    <option value="toys">Игрушки</option>
-</select>
+            const reader = new FileReader();
+            reader.readAsDataURL(fileInput.files[0]);
+            reader.onload = async () => {
+                const payload = {
+                    title: document.getElementById('title').value,
+                    price: document.getElementById('price').value,
+                    category: document.getElementById('category').value,
+                    imageName: fileInput.files[0].name,
+                    imageData: reader.result // Base64
+                };
 
-<input id="title" placeholder="Название">
-<input id="price" placeholder="Цена">
-<input type="file" id="image">
+                const response = await fetch("http://localhost:8081/api/product", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
 
-<button onclick="save()">Сохранить</button>
-
-<script>
-async function save() {
-  const file = document.getElementById("image").files[0];
-  const reader = new FileReader();
-
-  reader.onload = async function () {
-    const base64 = reader.result;
-
-    // 1. Загружаем картинку
-    const upload = await fetch("https://github.com/Contiblu/lexi/api/upload", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        file: base64,
-        name: file.name,
-        category: document.getElementById("category").value
-      })
-    });
-
-    const img = await upload.json();
-
-    // 2. Создаём товар
-    await fetch("https://github.com/Contiblu/lexi/api/product", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        category: document.getElementById("category").value,
-        product: {
-          slug: Date.now().toString(),
-          title: document.getElementById("title").value,
-          price: document.getElementById("price").value,
-          image: img.url
+                if (response.ok) alert("Товар на полке!");
+                else alert("Ошибка сервера");
+            };
         }
-      })
-    });
-
-    alert("Готово!");
-  };
-
-  reader.readAsDataURL(file);
-}
-</script>
-
+    </script>
 </body>
 </html>
