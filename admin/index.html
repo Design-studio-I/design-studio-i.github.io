@@ -1,64 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="utf-8">
-    <title>Админка Студии</title>
+    <title>Админка YAML</title>
     <style>
-        body { font-family: sans-serif; background: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
-        h2 { margin-top: 0; color: #333; text-align: center; }
-        input, select, button { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
-        button { background: #28a745; color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        button:hover { background: #218838; }
+        body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 40px; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
+        input, select, textarea, button { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
+        button { background: #007bff; color: white; border: none; font-weight: bold; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        label { font-weight: bold; color: #444; font-size: 14px; }
     </style>
 </head>
 <body>
     <div class="card">
-        <h2>Новый товар</h2>
-        <input type="text" id="title" placeholder="Название (например: Худи Хаски)">
-        <input type="number" id="price" placeholder="Цена (руб)">
+        <h2>Добавить товар на витрину</h2>
+        
+        <label>Категория (соотв. названию .yml файла)</label>
         <select id="category">
-            <option value="clothes">Одежда</option>
-            <option value="accessories">Аксессуары</option>
-            <option value="home">Для дома</option>
+            <option value="clothes">Одежда (clothes.yml)</option>
+            <option value="auto">Авто (auto.yml)</option>
+            <option value="accessories">Аксессуары (accessories.yml)</option>
+            <option value="interior">Интерьер (interior.yml)</option>
+            <option value="home">Для дома (home.yml)</option>
         </select>
-        <input type="file" id="image" accept="image/*">
-        <button onclick="send()">Выложить на витрину</button>
+
+        <label>Название товара</label>
+        <input type="text" id="title" placeholder="Эмблема Тойота">
+
+        <label>Цена</label>
+        <input type="text" id="price" placeholder="10000">
+
+        <label>Имя файла картинки (уже в папке)</label>
+        <input type="text" id="imageName" placeholder="clo_0002.jpg или car_0074.png">
+
+        <label>Описание</label>
+        <textarea id="description" placeholder="Напр: Вышивка сатин на интерьерные поверхности"></textarea>
+        
+        <button id="btn" onclick="addToYaml()">Добавить в список</button>
     </div>
 
     <script>
-        async function send() {
-            const btn = document.querySelector('button');
-            const file = document.getElementById('image').files[0];
-            if(!file) return alert("А фото?");
-
-            btn.innerText = "Загрузка...";
-            btn.disabled = true;
-
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = async () => {
-                try {
-                    const res = await fetch("http://localhost:8081/api/product", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            title: document.getElementById('title').value,
-                            price: document.getElementById('price').value,
-                            category: document.getElementById('category').value,
-                            imageName: file.name,
-                            imageData: reader.result
-                        })
-                    });
-                    const data = await res.json();
-                    alert(data.message);
-                } catch (e) {
-                    alert("Сервер не отвечает. Запусти node server.js!");
-                } finally {
-                    btn.innerText = "Выложить на витрину";
-                    btn.disabled = false;
-                }
+        async function addToYaml() {
+            const btn = document.getElementById('btn');
+            const payload = {
+                title: document.getElementById('title').value,
+                price: document.getElementById('price').value,
+                category: document.getElementById('category').value,
+                imageName: document.getElementById('imageName').value,
+                description: document.getElementById('description').value
             };
+
+            if (!payload.title || !payload.imageName) return alert("Название и имя фото обязательны!");
+
+            btn.disabled = true;
+            btn.innerText = "Сохранение...";
+
+            try {
+                const res = await fetch("http://localhost:8081/api/product", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                alert(data.message);
+                if(data.status === "success") {
+                    document.getElementById('title').value = '';
+                    document.getElementById('imageName').value = '';
+                }
+            } catch (e) {
+                alert("Ошибка! Проверь сервер node server.js");
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Добавить в список";
+            }
         }
     </script>
 </body>
