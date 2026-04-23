@@ -1,8 +1,7 @@
 backend:
-name: github
-  repo: Contiblu/.github.io
+  name: github
+  repo: design-studio-i/design-studio-i.github.io
   branch: main 
-  base_url: https://design-studio-i.github.io/
 
 media_folder: "assets/images/merch"
 public_folder: "/assets/images/merch"
